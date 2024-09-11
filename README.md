@@ -3,7 +3,7 @@
 ByteBack
 
 ## Overview
-![](./assets/ByteBack-logo.png)
+![](./src/assets/ByteBack-logo.png)
 
 We all know that interviews bite, now is your change to ByteBack with the next generation interview prep
 tool. This interactive web app is designed to help tech graduates prepare for those daunting technical interviews with tailored flash cards, algorithm prompts, and bytes of advice for interview success. 
@@ -37,14 +37,6 @@ difficult technical interviews based on the specific job title and/or skill set 
 - As a user, I want to be given the chance to retest myself on the areas I am struggling with
 - As a user, I want to be give links to the applicable MDN pages to help study certain topics
 
-(Debugger)
--As a user, I want to have the chance solve simple debugging issues in a code editor
-
-(Coding Challenge)
-- As a user, I want to be provided with a relavent algorithm challenge
-- As a user, I want to be able to input my code into a frontend editor and run it
-- As a user, I want to have the option to view an acceptable solution to the challenge
-    (Future Implementation: As a user, I want to be able to get feedback or decoding on my code)
 
 ## Implementation
 
@@ -88,15 +80,15 @@ Future Implementation
 
 ### Mockups
 
-![](./assets/byteback-landing-page.png)
-![](./assets/byteback-flash-cards.png)
+![](./src/assets/byteback-landing-page.png)
+![](./src/assets/byteback-flash-cards.png)
 
 ### Data
 
 
 The data is separated into five different tables: jobs-titles, skills, job-skills, questions, and answers. Each table is connected through the use of foreign keys. An example of the data flow and an example of populated tables has been included below.  
-![](./assets/SQL-database-diagram.png)
-![](./assets/dataflow-example.jpg)
+![](./src/assets/SQL-database-diagram.png)
+![](./src/assets/dataflow-example.jpg)
 
 
 ### Endpoints
@@ -220,8 +212,18 @@ direct ai prompt model. If feasible, the inputs defined above would be adjusted 
     - text box for inputting job description to extract job requirements
 
 Future Features:
-- Debugging section built with a live code editor. The code editor is populated with a buggy piece of code, the user must identify the issues
-  and run the code. 
-- Code Challenge section built with a live code editor. The user is given a prompt similar to the daily challenges in which they will need to 
-  create a snippet of code to complete a function. 
+    (Debugger)
+    -As a user, I want to have the chance solve simple debugging issues in a code editor
+    
+    - Debugging section built with a live code editor. The code editor is populated with a buggy piece  of code, the user must identify the issues and run the code. 
+
+    (Coding Challenge)
+    - As a user, I want to be provided with a relavent algorithm challenge
+    - As a user, I want to be able to input my code into a frontend editor and run it
+    - As a user, I want to have the option to view an acceptable solution to the challenge
+        (Future Implementation: As a user, I want to be able to get feedback or decoding on my code)
+
+    - Code Challenge section built with a live code editor. The user is given a prompt similar to the  daily challenges in which they will need to create a snippet of code to complete a function. 
     - With the integration of text prompt ai integration, the ai could provide feedback or support (hints) if the user is stuck. 
+
+
