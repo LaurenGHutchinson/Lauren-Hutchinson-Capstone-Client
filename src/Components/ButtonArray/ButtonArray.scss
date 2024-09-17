@@ -1,0 +1,11 @@
+.category-container{
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+span{
+    padding-left: 32px;
+}
