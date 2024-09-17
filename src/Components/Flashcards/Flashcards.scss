@@ -1,0 +1,83 @@
+/* Base reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+//   body {
+//     font-family: 'Courier', monospace;
+//     background-color: #ffe4c4; /* Retro beige */
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     height: 100vh;
+//     color: #333;
+//   }
+  
+  .flashcard-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .flashcard {
+    background-color: #f4a460; /* Retro sandy brown */
+    width: 400px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: bold;
+    position: relative;
+  }
+  
+  .question {
+    margin-bottom: 20px;
+  }
+  
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .option {
+    background-color: #008080; /* Retro teal */
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1em;
+  }
+  
+  .option:hover {
+    background-color: #00ced1; /* Lighter teal on hover */
+    transform: translateY(-3px);
+  }
+  
+  .correct {
+    background-color: #32cd32; /* Lime green for correct */
+  }
+  
+  .incorrect {
+    background-color: #ff6347; /* Tomato red for incorrect */
+  }
+  
+  .flashcard.correct .question {
+    color: #32cd32;
+  }
+  
+  .flashcard.incorrect .question {
+    color: #ff6347;
+  }
+  
+  /* Retro font and a cool effect for flashcard transitions */
+  .flashcard {
+    font-family: 'Courier', monospace;
+    transition: all 0.5s ease-in-out;
+  }
