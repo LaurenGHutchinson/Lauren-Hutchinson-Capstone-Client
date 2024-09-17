@@ -1,11 +1,97 @@
+
+@use '../../Styles/global' as *;
+@use '../../Styles/mixins' as *;
+
 .category-container{
     display: flex;
-    flex-direction: row;
-    gap: 24px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
     align-items: baseline;
-    justify-content: space-between;
+    padding: 0 24px 12px 24px;
+    @include tablet{
+        width: 100%;
+        gap: 24px;
+        flex-direction: row;
+        padding: 0 60px 12px 60px;
+        align-items: center;
+    }
 }
 
-span{
-    padding-left: 32px;
+.category__title{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: center;
+    gap: 10px;
+    color: white;
+    width: 100%;
+    @include tablet{
+        justify-content: flex-start;
+        width: 30%;
+    }
 }
+
+.category__item{
+    width: 100%;
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+    @include tablet{
+        width: auto;
+
+    }
+
+}
+
+.icon{
+    padding: 0;
+    margin: 0;
+    height: 12px;
+}
+
+.buttons--0{
+    background-color: red;
+}
+
+.buttons--1{
+    background-color: rgb(153, 53, 53);
+}
+
+.buttons--2{
+    background-color: rgb(53, 153, 136);
+}
+
+.buttons--3{
+    background-color: rgb(80, 53, 153);
+}
+
+.buttons--4{
+    background-color: rgb(153, 53, 108);
+}
+
+.buttons--5{
+    background-color: rgb(153, 138, 53);
+}
+
+.buttons--6{
+    background-color: rgb(60, 53, 153);
+}
+
+.buttons--7{
+    background-color: rgb(49, 95, 7);
+}
+
+button.selected {
+    background-color: green;
+    color: white;
+  }
+  
+  button:disabled {
+    background-color: darkgray;
+    cursor: not-allowed;
+  }
+
+
