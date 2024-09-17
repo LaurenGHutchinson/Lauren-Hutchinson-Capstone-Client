@@ -1,7 +1,23 @@
+@use '../../Styles/global' as *;
+@use '../../Styles/mixins' as *;
+
+.main-container{
+    gap: 24px;
+}
+
 .drop-down{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 24px;
+    width: 100vw;
+    margin: 0 auto;
+    align-items: center;
+    padding-bottom: 32px;
+    @include tablet{
+        flex-direction: row;
+        justify-content: center;
+        padding-bottom: 24px;
+    }
 }
 
 h2{

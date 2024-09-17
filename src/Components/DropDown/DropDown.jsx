@@ -55,7 +55,7 @@ function DropDown() {
 
     }, [])
   return (
-    <div>
+    <div className="main-container">
         <form onSubmit={handleSubmit}>
             <label className="drop-down"><h2>Select job title: </h2>
             <select
