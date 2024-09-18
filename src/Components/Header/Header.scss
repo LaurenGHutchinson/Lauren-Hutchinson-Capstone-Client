@@ -3,7 +3,7 @@
 
 a{
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 a:hover{
@@ -16,11 +16,16 @@ a:active{
     
 }
 
+.active{
+    color: green;
+    font-size: 24px;
+}
+
 .header{
     &__container{
     display:flex;
     flex-direction: row;
-    padding: 0 40px;
+    padding: 24px 40px;
     align-items: flex-end;
     justify-content: flex-start;
     gap: 48px;
@@ -32,6 +37,11 @@ a:active{
         display: flex;
         flex-direction: row;
         gap: 32px; 
+        align-items:flex-end;
     }
 
+}
+
+.icon{
+    padding-right: 8px;
 }

@@ -54,7 +54,6 @@ useEffect(() =>{
 
   return (
     <>
-      <h2>{selectedButtons.selectedButtons[0]}</h2>
       <Header />
       <Flashcard />
       </>
