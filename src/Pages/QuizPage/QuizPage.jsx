@@ -4,6 +4,7 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import Header from '../../Components/Header/Header.jsx'
 import Flashcard from '../../Components/Flashcards/Flashcards.jsx'
+import Buttons from '../../Components/Buttons/Buttons.jsx'
 
 function QuizPage() {
 
