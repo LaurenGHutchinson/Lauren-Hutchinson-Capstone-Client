@@ -1,63 +1,51 @@
 import './Buttons.scss';
-import {useState, useEffect} from 'react'
-import {useNavigate} from 'react-router-dom';
-import Icon from '../../assets/Icons/right-chevron.png'
+import {useState} from 'react'
 
 
-function Buttons({list}) {
 
-    const [skillCategories, setSkillCategories] = useState([]);
-    const [selectedButtons, setSelectedButtons] = useState([]);
-    const navigate = useNavigate();
-        
-    const handleButtonClick = (skill) => {
-        if (selectedButtons.includes(skill)) {
-            setSelectedButtons(selectedButtons.filter((selected) => selected !== skill));
-        } else {
-            if (selectedButtons.length <=5){
-                setSelectedButtons([...selectedButtons, skill])
-                console.log(selectedButtons);
-            }
-        }
+function Buttons({handleSelect, selectedSkills}) {
+    const [selectedValue, setSelectedValue] = useState();
+
+    const numQuestions = [5, 10, 15, 20, 25];
+
+    const handleNumQuestions = (e) => {
+        const numQuestionsSelected = parseInt(e.target.value, 10);
+        handleSelect(numQuestionsSelected);
+        setSelectedValue(numQuestionsSelected)
+        console.log(selectedValue);
     }
-
-    const handleSubmit = () => {
-        navigate('/quiz', {state:{selectedButtons}});
-    }
-
-    const handleReset = () => {
-        setSelectedButtons([]);
-        console.log(selectedButtons)
-    }
-    
-    useEffect(() => {
-        const skillCategories = [...new Set(skillsList.map((skill) => skill.category))];
-        setSkillCategories(skillCategories);
-    }, [skillsList]);
 
   return (
     <div>
-        <h2 className="skills-heading">Select skills to train (max 5):</h2>
-        {skillCategories.map((skillCat, index) => (
-        <article className="category-container">
-            <div className="category__title">
-                <img className="icon" src={Icon}/><h3>{skillCat}</h3>
+        <article className="button-container">
+            <div className="category__item">
+                <h3 className="questions-heading">Select your number of questions:</h3>
+            {numQuestions.map((num) => (
+                <button 
+                key={num}
+                value={num}
+                className={`btn ${selectedValue === num ? 'selected' : ''}`}
+                onClick={(e) => handleNumQuestions(e)}
+                >
+                    {num}
+                </button>
+            ))}
             </div>
             <div className="category__item">
-            {skillsList.filter((skills) => skills.category === skillCat).map((skills) => (
+                <h3 className="questions-heading">Selected Skills:</h3>
+            {selectedSkills.map((skill) => (
                 <button 
-                    key={skills.id}
-                    onClick={() => handleButtonClick(skills.id)}
-                    className={`btn buttons--${index} ${selectedButtons.includes(skills.id) ? 'selected' : ''}`}
-                    disabled={!selectedButtons.includes(skills.id) && selectedButtons.length >= 5}>
-                        {skills.skill}
-                    </button>
+                key={skill.id}
+                className="btn"
+                >
+                    {skill.skill}
+                </button>
             ))}
             </div>
         </article>
-        ))}
+{/* 
         <button onClick={handleReset}>Reset</button>
-        <button onClick={handleSubmit}>Enter</button>
+        <button onClick={handleSubmit}>Enter</button> */}
 
     </div>
   )

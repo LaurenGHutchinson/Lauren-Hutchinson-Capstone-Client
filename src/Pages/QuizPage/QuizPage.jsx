@@ -12,51 +12,19 @@ function QuizPage() {
   const selectedButtons = location.state|| {};
   const selectedSkills = selectedButtons.selectedButtons;
   console.log(selectedSkills);
-  const [questionsArray, setQuestionsArray] = useState([]);
-  const [skillQuestions, setSkillQuestions] = useState([]);
+  const [numOfQuestions, setNumOfQuestions] = useState()
 
-  const compileQuestions = () =>{
-    }
-
-useEffect(() => {
-  const questionsArray = ([...new Set(skillQuestions.map((skill) => skill))])
-  setQuestionsArray(questionsArray);
-
-}, [skillQuestions])
-
-console.log(questionsArray);
-
-useEffect(() =>{
-
-    selectedSkills.forEach((skill) => {
-      const getQuestionsList = async () => {
-          try {
-              const response = await axios.get(`http://localhost:8080/questions/${skill}`);
-              console.log(response.data) 
-              setSkillQuestions(response.data)
-              console.log(skillQuestions);
-              // if(response.data.length===0) {
-              //   return
-              // } else {
-              //   setSkillQuestions(response.data)
-              //   console.log(skillQuestions);
-
-              // }
-
-          }catch (error) {
-              console.error("Unable to get the questions list")
-          }
-      }
-      getQuestionsList();
-    })
-
-}, [])
+  const handleSelect = async (e) => {
+    setNumOfQuestions(e);
+    console.log(numOfQuestions);
+  }
 
 
   return (
     <>
       <Header />
-      <Flashcard />
+      <Buttons handleSelect={handleSelect} selectedSkills={selectedSkills}/>
+      <Flashcard selectedSkills={selectedSkills} numOfQuestions={numOfQuestions}/>
       </>
   )
 }

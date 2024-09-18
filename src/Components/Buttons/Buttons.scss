@@ -2,13 +2,13 @@
 @use '../../Styles/global' as *;
 @use '../../Styles/mixins' as *;
 
-.category-container{
+.button-container{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
     gap: 10px;
-    align-items: baseline;
+    // align-items: baseline;
     padding: 0 24px 12px 24px;
     @include tablet{
         width: 100%;
@@ -16,7 +16,13 @@
         flex-direction: row;
         padding: 0 60px 12px 60px;
         align-items: center;
+        justify-content: center;
     }
+}
+
+.selected {
+    background-color: green;
+    color: white;
 }
 
 h2{
@@ -25,8 +31,8 @@ h2{
     text-align: center;
 }
 
-.skills-heading{
-    padding-bottom: 24px;
+.questions-heading{
+    padding-right: 24px;
 }
 
 
@@ -56,47 +62,5 @@ h2{
     }
 
 }
-
-.buttons--0{
-    background-color: red;
-}
-
-.buttons--1{
-    background-color: rgb(153, 53, 53);
-}
-
-.buttons--2{
-    background-color: rgb(53, 153, 136);
-}
-
-.buttons--3{
-    background-color: rgb(80, 53, 153);
-}
-
-.buttons--4{
-    background-color: rgb(153, 53, 108);
-}
-
-.buttons--5{
-    background-color: rgb(153, 138, 53);
-}
-
-.buttons--6{
-    background-color: rgb(60, 53, 153);
-}
-
-.buttons--7{
-    background-color: rgb(49, 95, 7);
-}
-
-button.selected {
-    background-color: green;
-    color: white;
-  }
-  
-  button:disabled {
-    background-color: darkgray;
-    cursor: not-allowed;
-  }
 
 
