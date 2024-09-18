@@ -1,5 +1,6 @@
 import './ButtonArray.scss';
 import {useState, useEffect} from 'react'
+import {useNavigate} from 'react-router-dom';
 import Icon from '../../assets/Icons/right-chevron.png'
 
 
@@ -7,29 +8,36 @@ function ButtonArray({skillsList}) {
     console.log({skillsList})
     const [skillCategories, setSkillCategories] = useState([]);
     const [selectedButtons, setSelectedButtons] = useState([]);
+    const navigate = useNavigate();
         
-        const handleButtonClick = (skill) => {
-            console.log(skill);
-            if (selectedButtons.includes(skill)) {
-                setSelectedButtons(selectedButtons.filter((selected) => selected !== skill));
+    const handleButtonClick = (skill) => {
+        if (selectedButtons.includes(skill)) {
+            setSelectedButtons(selectedButtons.filter((selected) => selected !== skill));
+        } else {
+            if (selectedButtons.length <=5){
+                setSelectedButtons([...selectedButtons, skill])
                 console.log(selectedButtons);
-            } else {
-                if (selectedButtons.length < 6){
-                    setSelectedButtons([...selectedButtons, skill])
-                    console.log(selectedButtons);
-                }
             }
         }
+    }
+
+    const handleSubmit = () => {
+        navigate('/quiz', {state:{selectedButtons}});
+    }
+
+    const handleReset = () => {
+        setSelectedButtons([]);
+        console.log(selectedButtons)
+    }
     
     useEffect(() => {
-        // Using Set to remove duplicates
         const skillCategories = [...new Set(skillsList.map((skill) => skill.category))];
         setSkillCategories(skillCategories);
-        console.log(skillCategories); // Output the unique categories
     }, [skillsList]);
 
   return (
     <div>
+        <h2 className="skills-heading">Select skills to train (max 5):</h2>
         {skillCategories.map((skillCat, index) => (
         <article className="category-container">
             <div className="category__title">
@@ -41,15 +49,16 @@ function ButtonArray({skillsList}) {
                     key={skills.id}
                     onClick={() => handleButtonClick(skills.id)}
                     className={`btn buttons--${index} ${selectedButtons.includes(skills.id) ? 'selected' : ''}`}
-                    disabled={!selectedButtons.includes(skills.id) && selectedButtons.length >= 5}
-                    >
+                    disabled={!selectedButtons.includes(skills.id) && selectedButtons.length >= 5}>
                         {skills.skill}
                     </button>
             ))}
-
             </div>
         </article>
         ))}
+        <button onClick={handleReset}>Reset</button>
+        <button onClick={handleSubmit}>Enter</button>
+
     </div>
   )
 }

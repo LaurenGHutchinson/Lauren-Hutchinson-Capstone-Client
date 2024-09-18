@@ -24,13 +24,13 @@ function checkAnswer(button) {
   }
 }
   return (
-    <div class="flashcard-container">
-    <div class="flashcard">
-      <div class="question" id="question">What year did the moon landing happen?</div>
-      <div class="options" id="options">
-        <button class="option" onclick="checkAnswer(this)">1965</button>
-        <button class="option" onclick="checkAnswer(this)">1969</button>
-        <button class="option" onclick="checkAnswer(this)">1972</button>
+    <div className="flashcard-container">
+    <div className="flashcard">
+      <div className="question" id="question">What year did the moon landing happen?</div>
+      <div className="options" id="options">
+        <button className="option" onClick={checkAnswer}>1965</button>
+        <button className="option" onClick={checkAnswer}>1969</button>
+        <button className="option" onClick={checkAnswer}>1972</button>
       </div>
     </div>
   </div>
