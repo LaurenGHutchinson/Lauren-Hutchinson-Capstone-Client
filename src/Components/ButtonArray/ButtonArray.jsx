@@ -4,8 +4,9 @@ import {useNavigate} from 'react-router-dom';
 import Icon from '../../assets/Icons/right-chevron.png'
 
 
-function ButtonArray({skillsList}) {
+function ButtonArray({initialSkills ,skillsList}) {
     console.log({skillsList})
+    console.log({initialSkills})
     const [skillCategories, setSkillCategories] = useState([]);
     const [selectedButtons, setSelectedButtons] = useState([]);
     const navigate = useNavigate();

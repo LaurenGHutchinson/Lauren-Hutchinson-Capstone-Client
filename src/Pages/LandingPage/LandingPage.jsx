@@ -8,7 +8,7 @@ import Flashcards from '../../Components/Flashcards/Flashcards.jsx'
 function LandingPage() {
   return (
     <div className='main-page'>
-      <img src={logo} />
+      <img className='main-page__logo' src={logo} />
       <DropDown />
 
     </div>

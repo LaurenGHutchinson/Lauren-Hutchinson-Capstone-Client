@@ -1,13 +1,15 @@
 import React from 'react'
 import './CodeChallenge.scss'
 import axios from 'axios';
+import Header from '../../Components/Header/Header.jsx'
 
 
 function CodeChallenge() {
   return (
-    <div className='main-page'>
-      <img src={logo} />
-      <DropDown />
+    <div>
+      <Header />
+      
+
 
     </div>
   )

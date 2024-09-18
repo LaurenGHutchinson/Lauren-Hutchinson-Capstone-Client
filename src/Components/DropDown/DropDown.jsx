@@ -6,15 +6,15 @@ import ButtonArray from '../ButtonArray/ButtonArray.jsx'
 
 
 function DropDown() {
-    const [jobTitle, setJobTitle] = useState({});
+    const [initialJob, setInitialJob] = useState({});
     const [selectedJob, setSelectedJob] = useState({})
 
     const [jobTitles, setJobTitles] = useState([]);
     const [jobSkills, setJobSkills] = useState([]);
+    const [initialSkills, setInitialSkills] = useState([]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // setSelectedJob(e.target.id);
     }
 
     const handleInputChange = async (e) => {
@@ -40,17 +40,19 @@ function DropDown() {
         getSkillsList();
     }, [selectedJob])
 
-    useEffect(() =>{
-        const getJobList = async () => {
-            try {
-                const response = await axios.get("http://localhost:8080/jobs");
-                console.log(response.data);
-                setJobTitles(response.data);
-                setJobTitle(response.data[0])
-            }catch (error) {
-                console.error("Unable to get the job list")
-            }
+    const getJobList = async () => {
+        try {
+            const response = await axios.get("http://localhost:8080/jobs");
+            const firstJob = response.data[0];
+            setSelectedJob(firstJob.id);
+            console.log(selectedJob)
+            setJobTitles(response.data);
+            console.log(jobTitles);
+        }catch (error) {
+            console.error("Unable to get the job list")
         }
+    }
+    useEffect(() =>{
         getJobList();
 
     }, [])
