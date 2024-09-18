@@ -8,10 +8,8 @@ function Header() {
   const [currentPage, setCurrentPage] = useState();
   const params = useParams()
   let pageName = window.location.pathname.split('/').pop();
-  console.log(pageName);
   useEffect(() => {
     setCurrentPage(pageName)
-
   }, [])
 
   return (

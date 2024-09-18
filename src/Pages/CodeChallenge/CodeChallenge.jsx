@@ -8,8 +8,7 @@ function CodeChallenge() {
   return (
     <div>
       <Header />
-      
-
+    
 
     </div>
   )

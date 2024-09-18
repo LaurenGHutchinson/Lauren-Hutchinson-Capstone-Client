@@ -4,7 +4,7 @@ import {useNavigate} from 'react-router-dom';
 import Icon from '../../assets/Icons/right-chevron.png'
 
 
-function ButtonArray({initialSkills ,skillsList}) {
+function ButtonArray({initialSkills , skillsList}) {
     console.log({skillsList})
     console.log({initialSkills})
     const [skillCategories, setSkillCategories] = useState([]);
@@ -12,6 +12,7 @@ function ButtonArray({initialSkills ,skillsList}) {
     const navigate = useNavigate();
         
     const handleButtonClick = (skill) => {
+        console.log(skill)
         if (selectedButtons.includes(skill)) {
             setSelectedButtons(selectedButtons.filter((selected) => selected !== skill));
         } else {
@@ -42,15 +43,15 @@ function ButtonArray({initialSkills ,skillsList}) {
         {skillCategories.map((skillCat, index) => (
         <article className="category-container">
             <div className="category__title">
-                <img className="icon" src={Icon}/><h3>{skillCat}</h3>
+                <img className="icon" src={Icon}/><h3 >{skillCat}</h3>
             </div>
             <div className="category__item">
             {skillsList.filter((skills) => skills.category === skillCat).map((skills) => (
                 <button 
                     key={skills.id}
-                    onClick={() => handleButtonClick(skills.id)}
-                    className={`btn buttons--${index} ${selectedButtons.includes(skills.id) ? 'selected' : ''}`}
-                    disabled={!selectedButtons.includes(skills.id) && selectedButtons.length >= 5}>
+                    onClick={() => handleButtonClick(skills)}
+                    className={`btn buttons--${index} ${selectedButtons.includes(skills) ? 'selected' : ''}`}
+                    disabled={!selectedButtons.includes(skills) && selectedButtons.length >= 5}>
                         {skills.skill}
                     </button>
             ))}
