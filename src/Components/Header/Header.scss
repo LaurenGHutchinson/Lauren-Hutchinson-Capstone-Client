@@ -1,12 +1,37 @@
 @use '../../Styles/global' as *;
 @use '../../Styles/mixins' as *;
 
+a{
+    text-decoration: none;
+    color: black;
+}
 
-.header-container{
+a:hover{
+    text-decoration: underline;
+    color: white;
+}
+
+a:active{
+    border-bottom: 1px dotted white; 
+    
+}
+
+.header{
+    &__container{
     display:flex;
     flex-direction: row;
     padding: 0 40px;
-}
-.header-logo{
-    height: 110px;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 48px;
+    }
+    &__logo{
+        height: 50px;
+    }
+    &__nav{
+        display: flex;
+        flex-direction: row;
+        gap: 32px; 
+    }
+
 }
