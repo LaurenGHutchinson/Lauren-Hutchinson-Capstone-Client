@@ -17,6 +17,13 @@ function QuizPage() {
   const compileQuestions = () =>{
     }
 
+useEffect(() => {
+  const questionsArray = ([...new Set(skillQuestions.map((skill) => skill))])
+  setQuestionsArray(questionsArray);
+
+}, [skillQuestions])
+
+console.log(questionsArray);
 
 useEffect(() =>{
 
@@ -25,13 +32,15 @@ useEffect(() =>{
           try {
               const response = await axios.get(`http://localhost:8080/questions/${skill}`);
               console.log(response.data) 
-              if(response.data.length===0) {
-                return
-              } else {
-                setSkillQuestions(response.data)
-                console.log(skillQuestions)
+              setSkillQuestions(response.data)
+              console.log(skillQuestions);
+              // if(response.data.length===0) {
+              //   return
+              // } else {
+              //   setSkillQuestions(response.data)
+              //   console.log(skillQuestions);
 
-              }
+              // }
 
           }catch (error) {
               console.error("Unable to get the questions list")

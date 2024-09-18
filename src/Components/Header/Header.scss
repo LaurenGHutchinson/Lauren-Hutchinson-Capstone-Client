@@ -1,0 +1,12 @@
+@use '../../Styles/global' as *;
+@use '../../Styles/mixins' as *;
+
+
+.header-container{
+    display:flex;
+    flex-direction: row;
+    padding: 0 40px;
+}
+.header-logo{
+    height: 110px;
+}
