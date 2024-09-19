@@ -4,9 +4,10 @@ import {useState, useEffect} from 'react'
 
 
 function Buttons({handleSelect, selectedSkills}) {
-    const [selectedValue, setSelectedValue] = useState();
+    const [selectedValue, setSelectedValue] = useState(10);
 
     const numQuestions = [5, 10, 15, 20, 25];
+
 
     const handleNumQuestions = (e) => {
         e.preventDefault();
