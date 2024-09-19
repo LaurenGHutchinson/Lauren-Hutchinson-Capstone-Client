@@ -12,13 +12,13 @@ function QuizPage() {
   const selectedButtons = location.state|| {};
   const selectedSkills = selectedButtons.selectedButtons;
   console.log(selectedSkills);
-  const [numOfQuestions, setNumOfQuestions] = useState()
-
+  const [numOfQuestions, setNumOfQuestions] = useState();
+  
   const handleSelect = async (e) => {
-    setNumOfQuestions(e);
-    console.log(numOfQuestions);
+    const selectedNumber = e;
+    console.log(selectedNumber);
+    setNumOfQuestions(selectedNumber);
   }
-
 
   return (
     <>

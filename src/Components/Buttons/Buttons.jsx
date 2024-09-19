@@ -1,5 +1,5 @@
 import './Buttons.scss';
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 
 
@@ -9,10 +9,11 @@ function Buttons({handleSelect, selectedSkills}) {
     const numQuestions = [5, 10, 15, 20, 25];
 
     const handleNumQuestions = (e) => {
+        e.preventDefault();
         const numQuestionsSelected = parseInt(e.target.value, 10);
+        console.log(numQuestionsSelected)
         handleSelect(numQuestionsSelected);
         setSelectedValue(numQuestionsSelected)
-        console.log(selectedValue);
     }
 
   return (

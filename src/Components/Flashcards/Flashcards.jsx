@@ -5,11 +5,11 @@ import axios from'axios'
 
 function Flashcards({selectedSkills, numOfQuestions}) {
 
-
 const [questionsArray, setQuestionsArray] = useState([]);
 const [skillQuestions, setSkillQuestions] = useState([]);
-const [pickedQuestions, setPickedQuestions] = useState([]);
 
+const questionsPerSkill = Math.floor((numOfQuestions/selectedSkills.length))
+const remainder = numOfQuestions%selectedSkills.length;
 
 const getQuestionsList = async (skillId) => {
   try {
@@ -28,23 +28,31 @@ useEffect(() => {
     const allQuestions = await Promise.all(allQuestionsPromises);
 
     const combinedQuestions = allQuestions.flat();
-
+    getQuestionArray(allQuestions, combinedQuestions);
     setSkillQuestions(combinedQuestions);
-    getQuestionSet();
   };
 
   fetchAllQuestions();
-}, [selectedSkills]);
+}, [numOfQuestions]);
+
+const getQuestionArray = (questionsArray, allQuestions) => {
+  let pickedQuestions = [];
+  questionsArray.forEach((skillType) => {
+    const shuffled = skillType.sort(() => 0.5 - Math.random());
+    const selected = shuffled.slice(0,questionsPerSkill)
+    pickedQuestions = pickedQuestions.concat(selected);
+  })
+    const allShuffled = allQuestions.sort(() => 0.5 - Math.random());
+    const allSelected = allShuffled.slice(0, remainder);
+    pickedQuestions = pickedQuestions.concat(allSelected);
+    console.log(pickedQuestions);
+}
 
 useEffect(() => {
   const uniqueQuestions = [...new Set(skillQuestions)];
   setQuestionsArray(uniqueQuestions);
 }, [skillQuestions]);
 
-const getQuestionSet = async () => {
-    const questionsPerSkill = floor(numOfQuestions/selectedSkills.length)
-    console.log(questionsPerSkill);
-}
 // Function to check if the clicked answer is correct
 function checkAnswer(button) {
   const flashcard = document.querySelector('.flashcard');
