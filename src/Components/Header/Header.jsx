@@ -17,8 +17,8 @@ function Header() {
       <Link to="/"><img className="header__logo" src={logo}/></Link>
       <nav className="header__nav">
 
-        <Link to="/"><h3><img className="icon" src={backIcon}/>Change Careers</h3></Link>
-        <Link className={currentPage === 'quiz' ? 'active' : ''} to="/quiz"><h3>Quiz</h3></Link>
+        <Link to="/"><h3><img className="header__icon" src={backIcon}/>Change Careers</h3></Link>
+        <Link className={currentPage === 'quiz' || 'results' ? 'active' : ''} to="/quiz"><h3>Quiz</h3></Link>
         <Link className={currentPage === 'debugger' ? 'active' : ''} to="/debugger"><h3>Debugger</h3></Link>
         <Link className={currentPage === 'code-challenge' ? 'active' : ''} to="/code-challenge"><h3>Code Challenge</h3></Link>
       </nav>

@@ -26,9 +26,11 @@ a:active{
     display:flex;
     flex-direction: row;
     padding: 24px 40px;
+    margin: 0px 48px 48px 48px;
     align-items: flex-end;
     justify-content: flex-start;
     gap: 48px;
+    border-bottom: 1px solid green;
     }
     &__logo{
         height: 50px;
@@ -38,6 +40,11 @@ a:active{
         flex-direction: row;
         gap: 32px; 
         align-items:flex-end;
+    }
+    &__icon{
+        padding-right: 10px;
+        margin: 0;
+        height: 12px;
     }
 
 }
