@@ -20,7 +20,7 @@ function App() {
           <Route path="/debugger" element={<Debugger />}/>
           <Route path="/code-challenge" element={<CodeChallenge />}/>
         </Routes>
-        {/* <Footer /> */}
+        <Footer />
       </BrowserRouter>
 
   )
