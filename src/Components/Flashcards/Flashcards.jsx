@@ -2,8 +2,12 @@ import React from 'react'
 import './Flashcards.scss';
 import {useState, useEffect} from 'react'
 import axios from'axios'
+import {useNavigate} from 'react-router-dom';
 
 function Flashcards({selectedSkills, numOfQuestions}) {
+
+  const navigate = useNavigate();
+  console.log(numOfQuestions)
 
 const [pickedQuestionsArray, setPickedQuestionsArray] = useState([]);
 const [skillQuestions, setSkillQuestions] = useState([]);
@@ -71,8 +75,7 @@ const getQuestionArray = (questionsArray, allQuestions) => {
   const allShuffled = allQuestions.sort(() => 0.5 - Math.random());
   const allSelected = allShuffled.slice(0, remainder);
   pickedQuestions = pickedQuestions.concat(allSelected);
-  
-  console.log(pickedQuestions);
+
   setPickedQuestionsArray(pickedQuestions);
 };
 
@@ -83,29 +86,25 @@ useEffect(() => {
 }, [pickedQuestionsArray, currentQuestionIndex]);
 
 
-useEffect(() => {
-  const uniqueQuestions = [...new Set(skillQuestions)];
-  setPickedQuestionsArray(uniqueQuestions);
-}, [skillQuestions]);
-
 
 const handleSelectedAnswer = () => {
-
-  if(currentQuestionIndex < pickedQuestionsArray.length -1){
-    setCurrentQuestionIndex(currentQuestionIndex +1);
+  if (currentQuestionIndex < pickedQuestionsArray.length - 1) {
+    setCurrentQuestionIndex(currentQuestionIndex + 1);
+    setAnswersArray([]);
   } else {
-    alert("end of flashcards!");
+    setQuestionText("Congrats on Finishing the Quiz! Press next to view your results.")
+    setAnswersArray([{id: 1000, answer: 'See Results', question_id: 0, is_correct: 2}])
   }
-
-  // setSelectedAnswer(null);
-}
+};
 
 // Function to check if the clicked answer is correct
 const checkAnswer = (e, answer) => {
   console.log(e.target.value);
   const isCorrect = e.target.value === '1';
-  console.log("given answer is correct:", isCorrect);
-    if(isCorrect){
+  const isDone = e.target.value === '2'
+  if(isDone) {
+    navigate('/results');
+  } else if(isCorrect){
       setCorrectAnswers((prev) => {
         const updatedAnswers = [...prev, answer];
         console.log("Updated correctAnswers array:", updatedAnswers);
@@ -115,6 +114,7 @@ const checkAnswer = (e, answer) => {
 
     handleSelectedAnswer()
 };
+
   return (
     <div className="flashcard-container">
     <div className="flashcard">
@@ -127,21 +127,10 @@ const checkAnswer = (e, answer) => {
       value={answer.is_correct}
       onClick={(e) => checkAnswer(e, answer)}>{answer.answer}</button>
     ))}
-        
-             
-        {/* <button className="option" onClick={checkAnswer}>1965</button>
-        <button className="option" onClick={checkAnswer}>1969</button>
-        <button className="option" onClick={checkAnswer}>1972</button> */}
       </div>
     </div>
   </div>
   )
 }
-  // if (button.innerText === correctAnswer) {
-  //   button.classList.add('correct');
-  //   flashcard.classList.add('correct');
-  // } else {
-  //   button.classList.add('incorrect');
-  //   flashcard.classList.add('incorrect');
-  // }
+
 export default Flashcards

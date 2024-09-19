@@ -6,6 +6,7 @@ import LandingPage from './Pages/LandingPage/LandingPage.jsx';
 import QuizPage from './Pages/QuizPage/QuizPage.jsx';
 import Debugger from './Pages/Debugger/Debugger.jsx';
 import CodeChallenge from './Pages/CodeChallenge/CodeChallenge.jsx';
+import Results from './Pages/Results/Results.jsx';
 
 
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/quiz" element={<QuizPage />}/>
           <Route path="/debugger" element={<Debugger />}/>
           <Route path="/code-challenge" element={<CodeChallenge />}/>
+          <Route path="/results" element={<Results />}/>
         </Routes>
         <Footer />
       </BrowserRouter>
