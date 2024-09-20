@@ -13,7 +13,7 @@ const [pickedQuestionsArray, setPickedQuestionsArray] = useState([]);
 const [skillQuestions, setSkillQuestions] = useState([]);
 const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 const [questionText, setQuestionText] = useState("")
-// const [selectedAnswer, setSelectedAnswer] = useState(null);
+const [questionsLeft, setQuestionsLeft] = useState(null);
 const [answersArray, setAnswersArray] = useState([])
 const [correctAnswers, setCorrectAnswers] = useState([]);
 const [incorrectAnswers, setIncorrectAnswers] = useState([]);
@@ -97,20 +97,27 @@ const handleSelectedAnswer = () => {
   }
 };
 
+const currentQuestionDisplay = `${currentQuestionIndex + 1} / ${numOfQuestions}`;
 // Function to check if the clicked answer is correct
 const checkAnswer = (e, answer) => {
   console.log(e.target.value);
   const isCorrect = e.target.value === '1';
   const isDone = e.target.value === '2'
   if(isDone) {
-    navigate('/results');
+    navigate('/results', {state:{correctAnswers, incorrectAnswers, pickedQuestionsArray}});
   } else if(isCorrect){
       setCorrectAnswers((prev) => {
         const updatedAnswers = [...prev, answer];
         console.log("Updated correctAnswers array:", updatedAnswers);
         return updatedAnswers;
       });
-    }
+    } else{
+     setIncorrectAnswers((prev) => {
+      const updatedAnswers = [...prev, answer];
+      console.log("Updated correctAnswers array:", updatedAnswers);
+      return updatedAnswers;
+    });
+  }  
 
     handleSelectedAnswer()
 };
@@ -121,13 +128,16 @@ const checkAnswer = (e, answer) => {
       <h4 className="question" id="question">{questionText}</h4>
       <div className="options" id="options">
         {answersArray.map((answer) => (
-     <button 
-      className="option" 
-      key={answer.id}
-      value={answer.is_correct}
-      onClick={(e) => checkAnswer(e, answer)}>{answer.answer}</button>
-    ))}
+          <button 
+            className="option" 
+            key={answer.id}
+            value={answer.is_correct}
+            onClick={(e) => checkAnswer(e, answer)}>{answer.answer}</button>
+          ))}
       </div>
+    </div>
+    <div className="question-text">
+      <h3>{currentQuestionDisplay}</h3>
     </div>
   </div>
   )

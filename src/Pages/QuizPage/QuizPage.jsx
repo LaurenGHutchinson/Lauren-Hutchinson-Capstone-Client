@@ -5,6 +5,8 @@ import axios from 'axios';
 import Header from '../../Components/Header/Header.jsx'
 import Flashcard from '../../Components/Flashcards/Flashcards.jsx'
 import Buttons from '../../Components/Buttons/Buttons.jsx'
+import VerticalButtons from '../../Components/VerticalButtons/VerticalButtons.jsx'
+import Quotes from '../../Components/Quotes/Quotes.jsx'
 
 function QuizPage() {
 
@@ -25,8 +27,13 @@ function QuizPage() {
   return (
     <>
       <Header />
-      <Buttons handleSelect={handleSelect} selectedSkills={selectedSkills}/>
-      <Flashcard selectedSkills={selectedSkills} numOfQuestions={numOfQuestions}/>
+      <Buttons handleSelect={handleSelect}/>
+      <div className="main-quiz">
+        <VerticalButtons selectedSkills={selectedSkills}/>
+        <Flashcard selectedSkills={selectedSkills} numOfQuestions={numOfQuestions}/>
+        <Quotes />
+
+      </div>
       </>
   )
 }

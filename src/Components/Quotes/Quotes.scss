@@ -1,0 +1,40 @@
+
+@use '../../Styles/mixins' as *;
+
+.quotes{
+    width: 100%;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: flex-start;
+    flex-basis: 30%;
+    @include tablet{
+        width: auto;
+    }
+
+    &__text{
+      font-family:'Lucida Grande', sans-serif;
+      text-align:left;
+      color: black;
+      font-weight: bold;
+      font-size: 24px;
+      padding-bottom: 24px;
+    }
+
+    &__tip{
+
+      font-family: 'Lucida Grande', sans-serif;
+      text-align: left;
+      color: black;
+      font-style: italic;
+
+    }
+
+    &__card{
+      background-color: #60caf47c; /* Retro sandy brown */
+      padding: 20px;
+      margin-bottom: 24px;
+      border-radius: 15px;
+    }
+
+}
