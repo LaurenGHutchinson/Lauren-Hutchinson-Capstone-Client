@@ -1,5 +1,6 @@
 
 @use '../../Styles/mixins' as *;
+@use '../../Styles/fonts' as *;
 
 .quotes{
     width: 100%;
@@ -13,7 +14,7 @@
     }
 
     &__text{
-      font-family:'Lucida Grande', sans-serif;
+      font-family:'Montserrat';
       text-align:left;
       color: black;
       font-weight: bold;

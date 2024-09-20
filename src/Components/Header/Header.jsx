@@ -1,5 +1,5 @@
 import './Header.scss'
-import logo from '../../assets/ByteBack-logo.png';
+import logo from '../../assets/Big-Logo.png';
 import {Link, useParams} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import backIcon from '../../assets/Icons/left-arrow.png';

@@ -12,9 +12,21 @@ function DropDown() {
     const [jobTitles, setJobTitles] = useState([]);
     const [jobSkills, setJobSkills] = useState([]);
     const [initialSkills, setInitialSkills] = useState([]);
+    const [allSkills, setAllSkills] = useState([]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+    }
+
+    const handleAllSkillsClick = async () => {
+        try{
+            const response = await axios.get(`http://localhost:8080/skills/`)
+            console.log(response.data);
+            setJobSkills(response.data)
+            
+        }catch (error) {
+            console.error("The skills for the selected job cannot be found")
+        }
     }
 
     const handleInputChange = async (e) => {
@@ -78,6 +90,8 @@ function DropDown() {
             </select>
             </label>
         </form>
+        <h2>-OR- </h2>
+        <button onClick={handleAllSkillsClick}>See All Skills</button>
         <ButtonArray skillsList={jobSkills}/>
     </div>
   )

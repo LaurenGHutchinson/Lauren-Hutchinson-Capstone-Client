@@ -1,7 +1,6 @@
 import './QuizPage.scss'
 import {useLocation} from 'react-router-dom';
 import {useState, useEffect} from 'react';
-import axios from 'axios';
 import Header from '../../Components/Header/Header.jsx'
 import Flashcard from '../../Components/Flashcards/Flashcards.jsx'
 import Buttons from '../../Components/Buttons/Buttons.jsx'
@@ -11,11 +10,30 @@ import Quotes from '../../Components/Quotes/Quotes.jsx'
 function QuizPage() {
 
   const location = useLocation();
-  const selectedButtons = location.state|| {};
-  const selectedSkills = selectedButtons.selectedButtons;
-  console.log(selectedSkills);
   const [numOfQuestions, setNumOfQuestions] = useState(10);
+  const [selectedSkills, setSelectedSkills] = useState([]);
 
+  useEffect(() => {
+    console.log(selectedSkills);
+  }, [selectedSkills])
+
+  useEffect(() => {
+    console.log("Quiz page mounted")
+    let selectedButtons = location.state || {};
+    setSelectedSkills(selectedButtons.selectedButtons);
+    if(location.state){
+      localStorage.setItem('selected', JSON.stringify(location.state));
+     } 
+    if(localStorage.getItem('selected')){
+      selectedButtons = (JSON.parse(localStorage.getItem('selected')));
+      setSelectedSkills(selectedButtons.selectedButtons)
+      console.log(selectedButtons)
+    }
+
+    
+  }, [])
+
+ 
   
   
   const handleSelect = async (e) => {
