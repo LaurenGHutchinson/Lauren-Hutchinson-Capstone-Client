@@ -1,0 +1,15 @@
+@use '../../Styles/global' as *;
+@use '../../Styles/mixins' as *;
+
+.vertical-category__item{
+    width: 100%;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: flex-start;
+    flex-basis: 30%;
+    gap: 24px;
+    @include tablet{
+        width: auto;
+    }
+}

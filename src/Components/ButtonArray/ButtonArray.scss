@@ -2,6 +2,8 @@
 @use '../../Styles/global' as *;
 @use '../../Styles/mixins' as *;
 
+
+
 .category-container{
     display: flex;
     flex-direction: column;
@@ -57,37 +59,37 @@ h2{
 
 }
 
-.buttons--0{
-    background-color: red;
-}
+// .buttons--0{
+//     background-color: red;
+// }
 
-.buttons--1{
-    background-color: rgb(153, 53, 53);
-}
+// .buttons--1{
+//     background-color: rgb(153, 53, 53);
+// }
 
-.buttons--2{
-    background-color: rgb(53, 153, 136);
-}
+// .buttons--2{
+//     background-color: rgb(53, 153, 136);
+// }
 
-.buttons--3{
-    background-color: rgb(80, 53, 153);
-}
+// .buttons--3{
+//     background-color: rgb(80, 53, 153);
+// }
 
-.buttons--4{
-    background-color: rgb(153, 53, 108);
-}
+// .buttons--4{
+//     background-color: rgb(153, 53, 108);
+// }
 
-.buttons--5{
-    background-color: rgb(153, 138, 53);
-}
+// .buttons--5{
+//     background-color: rgb(153, 138, 53);
+// }
 
-.buttons--6{
-    background-color: rgb(60, 53, 153);
-}
+// .buttons--6{
+//     background-color: rgb(60, 53, 153);
+// }
 
-.buttons--7{
-    background-color: rgb(49, 95, 7);
-}
+// .buttons--7{
+//     background-color: rgb(49, 95, 7);
+// }
 
 button.selected {
     background-color: green;

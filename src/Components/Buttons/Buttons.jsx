@@ -1,9 +1,9 @@
 import './Buttons.scss';
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 
 
 
-function Buttons({handleSelect, selectedSkills}) {
+function Buttons({handleSelect}) {
     const [selectedValue, setSelectedValue] = useState(10);
 
     const numQuestions = [5, 10, 15, 20, 25];
@@ -20,9 +20,10 @@ function Buttons({handleSelect, selectedSkills}) {
   return (
     <div>
         <article className="button-container">
+
             <div className="category__item">
                 <h3 className="questions-heading">Select your number of questions:</h3>
-            {numQuestions.map((num) => (
+                {numQuestions.map((num) => (
                 <button 
                 key={num}
                 value={num}
@@ -33,21 +34,7 @@ function Buttons({handleSelect, selectedSkills}) {
                 </button>
             ))}
             </div>
-            <div className="category__item">
-                <h3 className="questions-heading">Selected Skills:</h3>
-            {selectedSkills.map((skill) => (
-                <button 
-                key={skill.id}
-                className="btn"
-                >
-                    {skill.skill}
-                </button>
-            ))}
-            </div>
         </article>
-{/* 
-        <button onClick={handleReset}>Reset</button>
-        <button onClick={handleSubmit}>Enter</button> */}
 
     </div>
   )

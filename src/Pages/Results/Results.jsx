@@ -1,14 +1,51 @@
 import React from 'react'
 import './Results.scss'
-import axios from 'axios';
 import Header from '../../Components/Header/Header.jsx'
-
+import {useLocation} from 'react-router-dom';
 
 function Results() {
+  const location = useLocation();
+  const {correctAnswers, incorrectAnswers, pickedQuestionsArray} = location.state|| {};
+
+
+function categorizeAnswers(pickedQuestionsArray, correctAnswers, incorrectAnswers) {
+  const categoryCount = {};
+
+  pickedQuestionsArray.forEach((question) => {
+    const { id, skill_name } = question;
+
+    if (!categoryCount[skill_name]) {
+      categoryCount[skill_name] = { correct: 0, incorrect: 0 };
+    }
+
+    const isCorrect = correctAnswers.some(answer => answer.question_id === id);
+    const isIncorrect = incorrectAnswers.some(answer => answer.question_id === id);
+
+    if (isCorrect) {
+      categoryCount[skill_name].correct += 1;
+    } else if (isIncorrect) {
+      categoryCount[skill_name].incorrect += 1;
+    }
+  });
+
+  return categoryCount;
+}
+
+const result = categorizeAnswers(pickedQuestionsArray, correctAnswers, incorrectAnswers);
+console.log(result);
+
   return (
     <div>
       <Header />
-    <h2>Here is your stupid fucking results</h2>
+      <div className='results'>
+          {Object.keys(result).map(category => (
+            <div className="results__item" key={category}>
+              <h3 className="results__category">{category}</h3>
+              <p className={`results__score--${category}`}>{result[category].correct} / {result[category].incorrect}</p>
+            </div>
+      ))}
+              <p className="results__total" >{correctAnswers.length} / {pickedQuestionsArray.length}</p>
+      </div>
 
     </div>
   )
