@@ -3,6 +3,7 @@ import './LandingPage.scss'
 import axios from 'axios';
 import logo from '../../assets/Big-Logo.png';
 import DropDown from '../../Components/DropDown/DropDown.jsx';
+import NightMode from '../../Components/NightMode/NightMode.jsx'
 
 function LandingPage() {
   return (

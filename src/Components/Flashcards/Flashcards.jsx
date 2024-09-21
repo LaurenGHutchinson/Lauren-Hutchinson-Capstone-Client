@@ -7,16 +7,15 @@ import {useNavigate} from 'react-router-dom';
 function Flashcards({selectedSkills, numOfQuestions}) {
 
   const navigate = useNavigate();
-  console.log(numOfQuestions)
 
 const [pickedQuestionsArray, setPickedQuestionsArray] = useState([]);
 const [skillQuestions, setSkillQuestions] = useState([]);
 const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 const [questionText, setQuestionText] = useState("")
-const [questionsLeft, setQuestionsLeft] = useState(null);
 const [answersArray, setAnswersArray] = useState([])
 const [correctAnswers, setCorrectAnswers] = useState([]);
 const [incorrectAnswers, setIncorrectAnswers] = useState([]);
+const [categoryStyling, setCategoryStyling] = useState([])
 
 
 const questionsPerSkill = Math.floor((numOfQuestions/selectedSkills.length))
@@ -37,19 +36,15 @@ const getQuestionsList = async (skillId) => {
 const getAnswersArray = async (currentQuestion) => {
   const currentQuestionId = currentQuestion.id;
   setQuestionText(currentQuestion.question)
-  console.log(questionText);
 
   try{
     const response = await axios.get(`http://localhost:8080/answers/${currentQuestionId}`);
-    console.log(response.data);
     setAnswersArray(response.data);
 
   }catch (error) {
     console.error("Unable to get the questions list", error);
   }
 }
-
-//Called when page is reloaded
 
 useEffect(() => {
   const fetchAllQuestions = async () => {
@@ -85,8 +80,6 @@ useEffect(() => {
   }
 }, [pickedQuestionsArray, currentQuestionIndex]);
 
-
-
 const handleSelectedAnswer = () => {
   if (currentQuestionIndex < pickedQuestionsArray.length - 1) {
     setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -98,13 +91,12 @@ const handleSelectedAnswer = () => {
 };
 
 const currentQuestionDisplay = `${currentQuestionIndex + 1} / ${numOfQuestions}`;
-// Function to check if the clicked answer is correct
+
 const checkAnswer = (e, answer) => {
-  console.log(e.target.value);
   const isCorrect = e.target.value === '1';
   const isDone = e.target.value === '2'
   if(isDone) {
-    navigate('/results', {state:{correctAnswers, incorrectAnswers, pickedQuestionsArray}});
+    navigate('/results', {state:{correctAnswers, incorrectAnswers, pickedQuestionsArray, selectedSkills}});
   } else if(isCorrect){
       setCorrectAnswers((prev) => {
         const updatedAnswers = [...prev, answer];
@@ -114,11 +106,10 @@ const checkAnswer = (e, answer) => {
     } else{
      setIncorrectAnswers((prev) => {
       const updatedAnswers = [...prev, answer];
-      console.log("Updated correctAnswers array:", updatedAnswers);
+      console.log("Updated inCorrectAnswers array:", updatedAnswers);
       return updatedAnswers;
     });
   }  
-
     handleSelectedAnswer()
 };
 
