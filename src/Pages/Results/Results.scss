@@ -5,8 +5,8 @@
 .results{
     display: flex;
     flex-direction: row;
-    align-items: center;
-    gap: 24px;
+    align-items: flex-start;
+    gap: 48px;
     width: 100%;
     margin: auto;
 
@@ -15,8 +15,6 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: baseline;
-        margin-left: 25%;
-        width: 50%;
         gap: 24px;
     }
 
@@ -24,6 +22,12 @@
         font-family: 'Montserrat';
         font-size: 24px;
         color: white;
+    }
+    &__category--total{
+        font-family: 'Montserrat';
+        font-size: 24px;
+        color: white;
+        padding-top: 16px;
     }
 
     &__score{
@@ -38,29 +42,68 @@
         font-size: 24px;
         color:white;
     }
-
-
-    
 }
 
-.results-breakdown{
+.results-categories{
     display: flex;
     flex-direction: column;
-    flex-basis:100%;
+    flex-basis:30%;
+    gap: 16px;
+    margin-left: 48px;
+    padding-right: 48px;
+    &__title{
+        color: white;
+        border-bottom: 1px white solid;
+    }
+}
+
+.results-corrections{
+    display: flex;
+    flex-direction: column;
+    flex-basis:70%;
+    gap: 16px;
+    margin-right:48px;
+    &__title{
+        color: white;
+        border-bottom: 1px white solid;
+    }
+    &__question{
+        color: white;
+    }
 }
 
 .answers{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
+    align-items: baseline;
     margin-right: 48px;
-    padding-bottom: 24px;
+    padding: 16px 0;
+    gap: 48px;
+    &-group{
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        gap: 16px;
+        &__title{
+            color: white;
+            font-family: "Montserrat"
+        }
+    }
+
 
 }
 
-.selected-answers{
-    border: 1px solid red;
-    background-color: $vs-soft-red;
+.btn--wrong{
+    background-color: rgb(141, 38, 38);
     padding: 8px;
-    border-radius: 16px;
+    color: white;
+    font-family: "Montserrat";
+}
+
+.btn--correct{
+    background-color: rgb(29, 100, 29);
+    padding: 8px;
+    color: white;
+    font-family: "Montserrat";
 }
