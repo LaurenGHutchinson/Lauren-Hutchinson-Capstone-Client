@@ -9,14 +9,14 @@ function Flashcards({selectedSkills, numOfQuestions}) {
   const navigate = useNavigate();
 
 const [pickedQuestionsArray, setPickedQuestionsArray] = useState([]);
-const [skillQuestions, setSkillQuestions] = useState([]);
 const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 const [questionText, setQuestionText] = useState("")
 const [answersArray, setAnswersArray] = useState([])
 const [correctAnswers, setCorrectAnswers] = useState([]);
 const [incorrectAnswers, setIncorrectAnswers] = useState([]);
-const [categoryStyling, setCategoryStyling] = useState([])
+const [allAnswers, setAllAnswers] = useState([]);
 
+console.log(selectedSkills)
 
 const questionsPerSkill = Math.floor((numOfQuestions/selectedSkills.length))
 const remainder = numOfQuestions%selectedSkills.length;
@@ -39,8 +39,10 @@ const getAnswersArray = async (currentQuestion) => {
 
   try{
     const response = await axios.get(`http://localhost:8080/answers/${currentQuestionId}`);
-    setAnswersArray(response.data);
+    const newAnswers = response.data
+    setAnswersArray(newAnswers);
 
+    setAllAnswers((prevAnswers) => [...prevAnswers, ...newAnswers]);
   }catch (error) {
     console.error("Unable to get the questions list", error);
   }
@@ -53,7 +55,6 @@ useEffect(() => {
     const combinedQuestions = allQuestions.flat();
     
     getQuestionArray(allQuestions, combinedQuestions);
-    setSkillQuestions(combinedQuestions);
   };
 
   fetchAllQuestions();
@@ -96,7 +97,7 @@ const checkAnswer = (e, answer) => {
   const isCorrect = e.target.value === '1';
   const isDone = e.target.value === '2'
   if(isDone) {
-    navigate('/results', {state:{correctAnswers, incorrectAnswers, pickedQuestionsArray, selectedSkills}});
+    navigate('/results', {state:{correctAnswers, incorrectAnswers, pickedQuestionsArray, allAnswers}});
   } else if(isCorrect){
       setCorrectAnswers((prev) => {
         const updatedAnswers = [...prev, answer];
@@ -120,15 +121,15 @@ const checkAnswer = (e, answer) => {
       <div className="options" id="options">
         {answersArray.map((answer) => (
           <button 
-            className="option" 
+          className="option"
             key={answer.id}
             value={answer.is_correct}
             onClick={(e) => checkAnswer(e, answer)}>{answer.answer}</button>
           ))}
       </div>
-    </div>
-    <div className="question-text">
-      <h3>{currentQuestionDisplay}</h3>
+        <div className="question-text">
+          <h3>{currentQuestionDisplay}</h3>
+      </div>
     </div>
   </div>
   )

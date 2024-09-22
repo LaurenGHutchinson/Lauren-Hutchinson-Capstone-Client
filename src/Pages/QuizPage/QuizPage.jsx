@@ -32,9 +32,6 @@ function QuizPage() {
 
     
   }, [])
-
- 
-  
   
   const handleSelect = async (e) => {
     const selectedNumber = e;

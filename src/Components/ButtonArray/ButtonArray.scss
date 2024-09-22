@@ -1,8 +1,7 @@
 
 @use '../../Styles/global' as *;
 @use '../../Styles/mixins' as *;
-
-
+@use '../../Styles/variables' as *;
 
 .category-container{
     display: flex;
@@ -31,17 +30,14 @@ h2{
     padding-bottom: 24px;
 }
 
-
 .category__title{
     display: flex;
     flex-direction: row;
     align-items: baseline;
-    // justify-content: center;
     gap: 10px;
     color: white;
     width: 100%;
     @include tablet{
-        // justify-content: flex-start;
         width: 30%;
     }
 }
@@ -52,53 +48,70 @@ h2{
     flex-direction:row;
     justify-content: center;
     align-items: center;
+    margin-bottom: 16px;
+    gap: 16px;
     @include tablet{
         width: auto;
 
     }
-
 }
 
-// .buttons--0{
-//     background-color: red;
-// }
+.button-wrapper{
+    display: inline-block;
+    transition: all 0.1s ease;
+}
 
-// .buttons--1{
-//     background-color: rgb(153, 53, 53);
-// }
-
-// .buttons--2{
-//     background-color: rgb(53, 153, 136);
-// }
-
-// .buttons--3{
-//     background-color: rgb(80, 53, 153);
-// }
-
-// .buttons--4{
-//     background-color: rgb(153, 53, 108);
-// }
-
-// .buttons--5{
-//     background-color: rgb(153, 138, 53);
-// }
-
-// .buttons--6{
-//     background-color: rgb(60, 53, 153);
-// }
-
-// .buttons--7{
-//     background-color: rgb(49, 95, 7);
-// }
+.button-wrapper.selected{
+ margin: 0 12px;
+}
 
 button.selected {
     background-color: green;
+    border: 2px solid rgb(255, 255, 255);
     color: white;
+    transform: scale(1.2);
   }
   
   button:disabled {
     background-color: darkgray;
     cursor: not-allowed;
   }
+
+
+.submit-buttons{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 48px;
+    justify-content: center;
+}
+
+.submit-button{
+    font-size: 16px;
+    padding: 8px 12px;
+}
+
+.submit-button:hover{
+    background-color: $background-dark;
+    border: 2px solid white;
+    color: white;
+}
+
+.icon-blink{
+    animation: blink 1s;
+    animation-iteration-count: infinite;
+    
+}
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
 
 
