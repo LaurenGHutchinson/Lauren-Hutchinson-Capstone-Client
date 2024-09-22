@@ -6,13 +6,10 @@ import ButtonArray from '../ButtonArray/ButtonArray.jsx'
 
 
 function DropDown() {
-    const [initialJob, setInitialJob] = useState({});
     const [selectedJob, setSelectedJob] = useState({})
 
     const [jobTitles, setJobTitles] = useState([]);
     const [jobSkills, setJobSkills] = useState([]);
-    const [initialSkills, setInitialSkills] = useState([]);
-    const [allSkills, setAllSkills] = useState([]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,7 +18,6 @@ function DropDown() {
     const handleAllSkillsClick = async () => {
         try{
             const response = await axios.get(`http://localhost:8080/skills/`)
-            console.log(response.data);
             setJobSkills(response.data)
             
         }catch (error) {
@@ -31,7 +27,6 @@ function DropDown() {
 
     const handleInputChange = async (e) => {
         e.preventDefault();
-        console.log(e.target.value)
         setSelectedJob(e.target.value);
     }
 
@@ -40,7 +35,6 @@ function DropDown() {
         const getSkillsList = async () => {
             try{
                 const response = await axios.get(`http://localhost:8080/skills/${selectedJob}`)
-                console.log(response.data);
                 setJobSkills(response.data)
 
                 
@@ -57,9 +51,7 @@ function DropDown() {
             const response = await axios.get("http://localhost:8080/jobs");
             const firstJob = response.data[0];
             setSelectedJob(firstJob.id);
-            console.log(selectedJob)
             setJobTitles(response.data);
-            console.log(jobTitles);
         }catch (error) {
             console.error("Unable to get the job list")
         }
@@ -74,7 +66,7 @@ function DropDown() {
             <label className="drop-down"><h2>Select job title: </h2>
             <select
             name="job_id"
-            className="drop-down__list"
+            className="drop-down__list selected-list"
             value={jobTitles.job_title}
             onChange={(e) => handleInputChange(e)}
             required
@@ -90,8 +82,10 @@ function DropDown() {
             </select>
             </label>
         </form>
-        <h2>-OR- </h2>
-        <button onClick={handleAllSkillsClick}>See All Skills</button>
+        <div className="drop-down">
+            <h2>-OR- </h2>
+            <button className="submit-button" onClick={handleAllSkillsClick}>See All Skills</button>
+        </div>
         <ButtonArray skillsList={jobSkills}/>
     </div>
   )

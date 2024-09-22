@@ -1,12 +1,11 @@
 import './Header.scss'
 import logo from '../../assets/Big-Logo.png';
-import {Link, useParams} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import backIcon from '../../assets/Icons/left-arrow.png';
 
 function Header() {
   const [currentPage, setCurrentPage] = useState();
-  const params = useParams()
   let pageName = window.location.pathname.split('/').pop();
   useEffect(() => {
     setCurrentPage(pageName)

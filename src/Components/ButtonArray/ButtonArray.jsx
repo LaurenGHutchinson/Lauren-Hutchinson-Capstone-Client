@@ -43,23 +43,27 @@ function ButtonArray({initialSkills , skillsList}) {
         {skillCategories.map((skillCat, index) => (
         <article className="category-container">
             <div className="category__title">
-                <img className="icon" src={Icon}/><h3 >{skillCat}</h3>
+                <img className="icon icon-blink" src={Icon}/><h3 >{skillCat}</h3>
             </div>
             <div className="category__item">
             {skillsList.filter((skills) => skills.category === skillCat).map((skills) => (
-                <button 
-                    key={skills.id}
-                    onClick={() => handleButtonClick(skills)}
-                    className={`btn buttons--${index} ${selectedButtons.includes(skills) ? 'selected' : ''}`}
-                    disabled={!selectedButtons.includes(skills) && selectedButtons.length >= 5}>
-                        {skills.skill}
+                <div className={`button-wrapper ${selectedButtons.includes(skills) ? 'selected' : ''}`}>
+                    <button 
+                        key={skills.id}
+                        onClick={() => handleButtonClick(skills)}
+                        className={`btn buttons--${index} ${selectedButtons.includes(skills) ? 'selected' : ''}`}
+                        disabled={!selectedButtons.includes(skills) && selectedButtons.length >= 5}>
+                            {skills.skill}
                     </button>
+                </div>
             ))}
             </div>
         </article>
         ))}
-        <button onClick={handleReset}>Reset</button>
-        <button onClick={handleSubmit}>Enter</button>
+        <div className="submit-buttons"> 
+            <button className="submit-button" onClick={handleReset}>Reset</button>
+            <button className="submit-button" onClick={handleSubmit}>Enter</button>
+        </div>
 
     </div>
   )

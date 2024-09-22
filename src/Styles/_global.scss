@@ -12,10 +12,7 @@
     border: none;
     text-align: center;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
-    margin-right: 16px;
-    margin-bottom: 10px;
     color: black;
-    
 }
 
 .icon{
@@ -24,50 +21,119 @@
     height: 12px;
 }
 
-
-$vs-blue: #007ACC; // – Bright Blue (main accent color)
-$vs-soft-blue: #569CD6; // – Soft Blue (for links and function names)
-$vs-green: #4EC9B0; // – Aqua Green (syntax highlighting for variables or types)
-$vs-soft-purple:#C586C0; // – Soft Purple (used for function calls and parameters)
-$vs-beige:#D7BA7D; // – Light Beige (highlighting keywords or operators)
-$vs-soft-red:#D16969; // – Soft Red (used for error-related elements)
-$vs-light-blue:#9CDCFE; // – Light Blue (used for numbers or data types)
-$vs-soft-green:#B5CEA8; // – Soft Green (for success or environmental variables)
-$vs-salmon:#CE9178; // – Salmon (for string literals or attributes)
-$vs-red:#F44747; // – Bright Red (used for errors and warnings)
-$vs-light-yello:#DCDCAA; // – Light Yellow (for keywords and constants)
-$vs-purple:#68217A; // – Deep Purple (used for structural elements)
 .buttons--0{
     background-color: $vs-blue;
+    &:hover{
+        background-color: $background-dark;
+        color: $vs-blue;
+        border: 2px solid $vs-blue;
+    }
 }
 .buttons--0{
-    background-color: $vs-light-yello;
+    background-color: $vs-light-yellow;
+    &:hover{
+        background-color: $background-dark;
+        color: $vs-light-yellow;
+        border: 2px solid $vs-light-yellow;
+    }
 }
 
 .buttons--1{
     background-color: $vs-soft-blue;
+    &:hover{
+        background-color: $background-dark;
+        color: $vs-soft-blue;
+        border: 2px solid $vs-soft-blue;
+    }
 }
 
 .buttons--2{
     background-color: $vs-soft-green;
+    &:hover{
+        background-color: $background-dark;
+        color: $vs-soft-green;
+        border: 2px solid $vs-soft-green;
+    }
 }
 
 .buttons--3{
     background-color: $vs-purple;
+    color:white;
+    &:hover{
+        background-color: $background-dark;
+        color: $vs-soft-purple;
+        border: 2px solid $vs-soft-purple;
+    }
 }
 
 .buttons--4{
     background-color: $vs-beige;
+    &:hover{
+        background-color: $background-dark;
+        color: $vs-beige;
+        border: 2px solid $vs-beige;
+    }
 }
 
 .buttons--5{
     background-color: $vs-red;
+    color:white;
+    &:hover{
+        background-color: $background-dark;
+        color: $vs-red;
+        border: 2px solid $vs-red;
+    }
 }
 
 .buttons--6{
     background-color: $vs-soft-purple;
+    &:hover{
+        background-color: $background-dark;
+        color: $vs-soft-purple;
+        border: 2px solid $vs-soft-purple;
+    }
+
 }
 
 .buttons--7{
+    background-color: $vs-soft-red;
+    &:hover{
+        background-color: $background-dark;
+        color: $vs-soft-red;
+        border: 2px solid $vs-soft-red;
+    }
+}
+.buttons--8{
+    background-color: $vs-light-blue;
+    &:hover{
+        background-color: $background-dark;
+        color: $vs-light-blue;
+        border: 2px solid $vs-light-blue;
+    }
+}
+
+.buttons--9{
     background-color: $vs-green;
+    &:hover{
+        background-color: $background-dark;
+        color: $vs-green;
+        border: 2px solid $vs-green;
+    }
+}
+.buttons--10{
+    background-color: $vs-salmon;
+    &:hover{
+        background-color: $background-dark;
+        color: $vs-salmon;
+        border: 2px solid $vs-salmon;
+    }
+}
+
+.buttons--11{
+    background-color: $vs-soft-green;
+    &:hover{
+        background-color: $background-dark;
+        color: $vs-soft-green;
+        border: 2px solid $vs-soft-green;
+    }
 }

@@ -1,8 +1,22 @@
-/* Base reset */
+@use '../../Styles/variables' as *;
+@use '../../Styles/global' as *;
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  }
+
+  h3{
+    font-family: "Montserrat"
+  }
+
+  .wrong-answer{
+    background-color: red;
+  }
+
+  .selected{
+    background-color:green;
   }
   
   .flashcard-container {
@@ -14,8 +28,13 @@
   }
   
   .flashcard {
-    background-color: #f4a460; /* Retro sandy brown */
+    background-color: $vs-salmon; /* Retro sandy brown */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 24px;
     width: 400px;
+    min-height: 250px;
     padding: 20px;
     margin-bottom: 24px;
     border-radius: 15px;
@@ -24,27 +43,29 @@
     color: #fff;
     font-size: 1.2em;
     font-weight: bold;
-    position: relative;
   }
 
   .question-text{
-    font-family: Arial, Helvetica, sans-serif;
     display: flex;
+    font-family: "Montserrat";
     flex-direction: row;
-    justify-content: flex-end;
-    width: 400px;
-    padding-right: 16px;
-    font-size: 24px;
+    padding: 0 12px;
+    justify-content: center;
   }
   
   .question {
-    margin-bottom: 20px;
+    font-family: "Montserrat";
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-basis: 30%;
   }
   
   .options {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
+    flex-basis: 70%;
     gap: 10px;
   }
   

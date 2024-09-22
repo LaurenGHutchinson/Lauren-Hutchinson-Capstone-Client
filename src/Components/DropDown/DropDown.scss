@@ -1,5 +1,6 @@
 @use '../../Styles/global' as *;
 @use '../../Styles/mixins' as *;
+@use '../../Styles/variables' as *;
 
 .main-container{
     gap: 24px;
@@ -26,20 +27,30 @@ h2{
     color: white;
 }
 
-.drop-down__list{
+.drop-down__list, .selected-job{
     font-family: 'Courier New', Courier, monospace;
     padding: 0;
     background-color: transparent;
     border: none;
     border-bottom: 3px white dotted;
-    color: rgb(105, 47, 47);
+    color: $vs-salmon;
     font-size: 18px;
+}
 
+ .drop-down__list:focus{
+    font-family: 'Courier New', Courier, monospace;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px white dotted;
+    color: black;
+    font-size: 18px;
 }
 
 .list-color{
     background-color: transparent;
 }
+
 
 .drop-down__list:hover{
     background: transparent;

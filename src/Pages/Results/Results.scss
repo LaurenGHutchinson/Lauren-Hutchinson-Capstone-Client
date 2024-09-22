@@ -1,20 +1,23 @@
 @use '../../Styles/fonts' as *;
 @use '../../Styles/variables' as *;
+@use '../../Styles/global' as*;
 
 .results{
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
     gap: 24px;
-    width: 35vw;
+    width: 100%;
     margin: auto;
+
     &__item{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: baseline;
+        margin-left: 25%;
+        width: 50%;
         gap: 24px;
-        width: 100%;
     }
 
     &__category{
@@ -35,4 +38,29 @@
         font-size: 24px;
         color:white;
     }
+
+
+    
+}
+
+.results-breakdown{
+    display: flex;
+    flex-direction: column;
+    flex-basis:100%;
+}
+
+.answers{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 48px;
+    padding-bottom: 24px;
+
+}
+
+.selected-answers{
+    border: 1px solid red;
+    background-color: $vs-soft-red;
+    padding: 8px;
+    border-radius: 16px;
 }

@@ -2,11 +2,9 @@ import React from 'react'
 import './VerticalButtons.scss'
 
 function VerticalButtons({selectedSkills}) {
-
-    console.log(selectedSkills)
   return (
       <div className="vertical-category__item">
-        <h3 className="questions-heading">Selected Skills:</h3>
+        <h3 className="title">Selected Skills:</h3>
             {selectedSkills.map((skill, index) => (
             <button 
                 key={skill.id}
