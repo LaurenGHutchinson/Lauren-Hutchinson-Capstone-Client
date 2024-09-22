@@ -8,6 +8,7 @@ import Debugger from './Pages/Debugger/Debugger.jsx';
 import CodeChallenge from './Pages/CodeChallenge/CodeChallenge.jsx';
 import Results from './Pages/Results/Results.jsx';
 import NightMode from './Components/NightMode/NightMode.jsx'
+import LiveEditor from './Components/LiveEditorComponents/LiveEditor/LiveEditor.jsx'
 
 
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/debugger" element={<Debugger />}/>
           <Route path="/code-challenge" element={<CodeChallenge />}/>
           <Route path="/results" element={<Results />}/>
+          <Route path="/live-editor" element={<LiveEditor />}/>
         </Routes>
         <Footer />
       </BrowserRouter>
