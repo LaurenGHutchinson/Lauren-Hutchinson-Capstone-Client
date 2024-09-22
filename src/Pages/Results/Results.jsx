@@ -61,15 +61,12 @@ useEffect(() => {
 }, [pickedQuestionsArray, incorrectAnswers, allAnswers]);
 
 
-
-
-
-
   return (
     <div>
       <Header />
       <div className='results'>
-        <div className="results-breakdown">
+        <div className="results-categories">
+          <h3 className="results-categories__title">Score Breakdown</h3>
           {Object.keys(result).map(category => (
             <div className="results__item" key={category}>
               <h3 className='results__category'>{category}</h3>
@@ -77,20 +74,24 @@ useEffect(() => {
             </div>
       ))}
             <div className="results__item">
-              <h3 className='results__category'>Total Score:</h3>
+              <h3 className='results__category--total'>Total Score:</h3>
               <p className="results__total" >{correctAnswers.length} / {pickedQuestionsArray.length}</p>
             </div>
         </div>
-        <div className="results-breakdown">
-          <h3>Where you went wrong</h3>
+        <div className="results-corrections">
+          <h3 className="results-corrections__title">Where you went wrong</h3>
             {questionAnswerArray.map((answer) => (
               <div>
-                <button>Question: {answer.questionText}</button>
+                <h4 className="results-corrections__question">Question: {answer.questionText}</h4>
                 <div className="answers">
-                  <p>Selected Answer:</p>
-                  <p className="selected-answers">{answer.selectedAnswers}</p>
-                  <p>Correct Answer:</p>
-                  <p>{answer.correctAnswer}</p>
+                  <div className="answers-group">
+                    <p className="answers-group__title">Selected Answer:</p>
+                    <p className="btn btn--wrong">{answer.selectedAnswers}</p>
+                  </div>
+                  <div className="answers-group">
+                    <p className="answers-group__title">Correct Answer:</p>
+                    <p className="btn btn--correct">{answer.correctAnswer}</p>
+                  </div>
                 </div>
                 </div>
               
