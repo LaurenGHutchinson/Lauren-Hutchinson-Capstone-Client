@@ -7,7 +7,7 @@ export const LANGUAGE_VERSIONS = {
 }
 
 export const CODE_SNIPPETS = {
-    javascript: `\nfunction greet(name) {\n\tconsole.log("Hello, " + name + "!");\n}\n\ngreet("Alex");\n`,
+    javascript: `\n// This code is supposed to print the numbers 0 through 4\nfunction printNumbers() {\n\tfor (var i = 0; i <= 5; i++) {\n\t\tconsole.log(i);\n\t}\n}\nprintNumbers();\n`,
     typescript: `\ntype Params = {\n\tname: string;\n}\n\nfunction greet(data: Params) {\n\tconsole.log("Hello, " + data.name + "!");\n}\n\ngreet({ name: "Alex" });\n`,
     python: `\ndef greet(name):\n\tprint("Hello, " + name + "!")\n\ngreet("Alex")\n`,
     java: `\npublic class HelloWorld {\n\tpublic static void main(String[] args) {\n\t\tSystem.out.println("Hello World");\n\t}\n}\n`,

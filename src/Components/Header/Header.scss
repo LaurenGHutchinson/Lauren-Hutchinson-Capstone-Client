@@ -47,8 +47,15 @@ a:active{
         height: 12px;
     }
 
-}
+    &__nav-back{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+    }
 
-.icon{
-    padding-right: 8px;
+    &__items{
+        font-family: 'Courier New', Courier, monospace;
+    }
+
 }

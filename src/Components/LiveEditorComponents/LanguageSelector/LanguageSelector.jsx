@@ -1,15 +1,15 @@
 import React from 'react'
 import {Box, Button, Text, Menu, MenuButton, MenuList, MenuItem} from '@chakra-ui/react';
 import './LanguageSelector.scss'
-import { LANGUAGE_VERSIONS } from '../../constants';
+import { LANGUAGE_VERSIONS } from '../../../constants';
 const languages = Object.entries(LANGUAGE_VERSIONS)
 
 const LanguageSelector = ({language, onSelect}) => {
 
   return (
     <Box className="main-box">
-        <Text className="selector-box">
-            Language:
+        <Text mb={2} fontSize="lg">
+            Language
         </Text>
         <Menu isLazy>
             <MenuButton as={Button}>{language}</MenuButton>
