@@ -6,7 +6,7 @@ import {useNavigate} from 'react-router-dom';
 
 function Flashcards({selectedSkills, numOfQuestions}) {
 
-  const navigate = useNavigate();
+const navigate = useNavigate();
 
 const [pickedQuestionsArray, setPickedQuestionsArray] = useState([]);
 const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -16,12 +16,9 @@ const [correctAnswers, setCorrectAnswers] = useState([]);
 const [incorrectAnswers, setIncorrectAnswers] = useState([]);
 const [allAnswers, setAllAnswers] = useState([]);
 
-console.log(selectedSkills)
 
 const questionsPerSkill = Math.floor((numOfQuestions/selectedSkills.length))
 const remainder = numOfQuestions%selectedSkills.length;
-
-//AXIOS calls for questions and answers
 
 const getQuestionsList = async (skillId) => {
   try {
@@ -44,7 +41,7 @@ const getAnswersArray = async (currentQuestion) => {
 
     setAllAnswers((prevAnswers) => [...prevAnswers, ...newAnswers]);
   }catch (error) {
-    console.error("Unable to get the questions list", error);
+    console.error("Unable to get the answers array", error);
   }
 }
 
@@ -101,13 +98,11 @@ const checkAnswer = (e, answer) => {
   } else if(isCorrect){
       setCorrectAnswers((prev) => {
         const updatedAnswers = [...prev, answer];
-        console.log("Updated correctAnswers array:", updatedAnswers);
         return updatedAnswers;
       });
     } else{
      setIncorrectAnswers((prev) => {
       const updatedAnswers = [...prev, answer];
-      console.log("Updated inCorrectAnswers array:", updatedAnswers);
       return updatedAnswers;
     });
   }  
@@ -128,7 +123,7 @@ const checkAnswer = (e, answer) => {
           ))}
       </div>
         <div className="question-text">
-          <h3>{currentQuestionDisplay}</h3>
+          <h3 className="question-count">{currentQuestionDisplay}</h3>
       </div>
     </div>
   </div>

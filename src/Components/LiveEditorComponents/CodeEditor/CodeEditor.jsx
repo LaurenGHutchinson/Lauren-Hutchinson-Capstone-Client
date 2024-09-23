@@ -26,7 +26,6 @@ const CodeEditor = () => {
     try {
       if (editorPage === 'debugger') {
         const response = await axios.get(`http://localhost:8080/debugger/${language}`);
-        console.log(response.data)
         setDebuggingArray(response.data);
       
         if (response.data && response.data.length > 0) {
@@ -41,7 +40,6 @@ const CodeEditor = () => {
       console.error("Unable to get the coding challenges", error);
     }
   };
-  console.log(setValue);
 
   useEffect(() => {
     getCodePrompts()
@@ -51,7 +49,6 @@ const CodeEditor = () => {
   const handleCompletedChallenge = () => {
     if (currentChallengeIndex < debuggingArray.length - 1) {
       const nextIndex = currentChallengeIndex + 1;
-      console.log(nextIndex);
       setCurrentChallengeIndex(nextIndex);
   
       const nextChallenge = debuggingArray[nextIndex]

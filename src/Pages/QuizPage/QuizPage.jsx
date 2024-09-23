@@ -14,11 +14,6 @@ function QuizPage() {
   const [selectedSkills, setSelectedSkills] = useState([]);
 
   useEffect(() => {
-    console.log(selectedSkills);
-  }, [selectedSkills])
-
-  useEffect(() => {
-    console.log("Quiz page mounted")
     let selectedButtons = location.state || {};
     setSelectedSkills(selectedButtons.selectedButtons);
     if(location.state){
@@ -27,15 +22,12 @@ function QuizPage() {
     if(localStorage.getItem('selected')){
       selectedButtons = (JSON.parse(localStorage.getItem('selected')));
       setSelectedSkills(selectedButtons.selectedButtons)
-      console.log(selectedButtons)
     }
-
     
   }, [])
   
   const handleSelect = async (e) => {
     const selectedNumber = e;
-    console.log(selectedNumber);
     setNumOfQuestions(selectedNumber);
   }
 

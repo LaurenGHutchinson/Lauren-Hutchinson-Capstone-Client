@@ -73,8 +73,7 @@ function Quotes() {
     const randomIndex = Math.floor(Math.random() * quotes.length);
     setInterviewTips(quotes[randomIndex])
   }
-
-  console.log(interviewTips)
+  
   useEffect(() =>{
     selectQuote()
   }, [])
@@ -84,7 +83,7 @@ function Quotes() {
     <div className="quotes__card">
       <h4 className="quotes__text">{interviewTips.quote}</h4>
       <h4 className="quotes__tip"> - {interviewTips.tip}</h4>
-      </div>
+    </div>
     </div>
   )
 }

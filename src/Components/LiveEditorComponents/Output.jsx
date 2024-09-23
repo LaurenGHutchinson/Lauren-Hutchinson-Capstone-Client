@@ -17,7 +17,7 @@ const Output = ({ editorRef, language }) => {
       setOutput(result.output.split("\n"));
       result.stderr ? setIsError(true) : setIsError(false);
     } catch (error) {
-      console.log(error);
+      console.error(error);
       toast({
         title: "An error occurred.",
         description: error.message || "Unable to run code",
