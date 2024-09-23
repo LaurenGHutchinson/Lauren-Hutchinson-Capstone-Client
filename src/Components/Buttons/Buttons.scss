@@ -1,6 +1,14 @@
 
 @use '../../Styles/global' as *;
 @use '../../Styles/mixins' as *;
+@use '../../Styles//fonts' as*;
+
+h2{
+    margin: 0;
+    font-family: "Montserrat";
+    color: white;
+    text-align: center;
+}
 
 .button-container{
     display: flex;
@@ -8,7 +16,6 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 10px;
-    // align-items: baseline;
     padding: 0 24px 12px 24px;
     @include tablet{
         width: 100%;
@@ -25,29 +32,8 @@
     color: white;
 }
 
-h2{
-    margin: 0;
-    color: white;
-    text-align: center;
-}
-
 .questions-heading{
     padding-right: 24px;
-}
-
-
-.category__title{
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    justify-content: center;
-    gap: 10px;
-    color: white;
-    width: 100%;
-    @include tablet{
-        justify-content: flex-start;
-        width: 30%;
-    }
 }
 
 .category__item{

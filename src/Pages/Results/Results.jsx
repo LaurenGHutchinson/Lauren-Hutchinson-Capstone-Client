@@ -80,17 +80,17 @@ useEffect(() => {
         </div>
         <div className="results-corrections">
           <h3 className="results-corrections__title">Where you went wrong</h3>
-            {questionAnswerArray.map((answer) => (
+            {Object.keys(questionAnswerArray).map((answer) => (
               <div>
-                <h4 className="results-corrections__question">Question: {answer.questionText}</h4>
+                <h4 className="results-corrections__question">Question: {questionAnswerArray[answer].questionText}</h4>
                 <div className="answers">
                   <div className="answers-group">
                     <p className="answers-group__title">Selected Answer:</p>
-                    <p className="btn btn--wrong">{answer.selectedAnswers}</p>
+                    <p className="btn btn--wrong">{questionAnswerArray[answer].selectedAnswers}</p>
                   </div>
                   <div className="answers-group">
                     <p className="answers-group__title">Correct Answer:</p>
-                    <p className="btn btn--correct">{answer.correctAnswer}</p>
+                    <p className="btn btn--correct">{questionAnswerArray[answer].correctAnswer}</p>
                   </div>
                 </div>
                 </div>
