@@ -15,7 +15,6 @@ const CodeEditor = () => {
   const [debuggingArray, setDebuggingArray] = useState([])
   const [codeChallengeArray, setCodeChallengeArray] = useState([]);
   const [currentChallengeIndex, setCurrentChallengeIndex] = useState(0);
-  const [completedText, setCompletedText] = useState('');
 
 
   let pageName = window.location.pathname.split('/').pop();
@@ -34,18 +33,20 @@ const CodeEditor = () => {
           setValue(response.data[0][language]);
         }
       } else {
-        // const response = await axios.get("http://localhost:8080/debugger");
-        // setCodeChallengeArray(response.data);
+        const response = await axios.get("http://localhost:8080/codingChallenge");
+        setCodeChallengeArray(response.data);
+        setValue(`${response.data[0].question}\n\n//Expected Outcome: ${response.data[0].expectedOutcome}`)
       }
     } catch (error) {
       console.error("Unable to get the coding challenges", error);
     }
   };
+  console.log(setValue);
 
   useEffect(() => {
     getCodePrompts()
     setCurrentChallengeIndex(0);
-  }, [language])
+  }, [language, editorPage])
 
   const handleCompletedChallenge = () => {
     if (currentChallengeIndex < debuggingArray.length - 1) {
@@ -53,13 +54,19 @@ const CodeEditor = () => {
       console.log(nextIndex);
       setCurrentChallengeIndex(nextIndex);
   
-      const nextChallenge = debuggingArray[nextIndex];
+      const nextChallenge = debuggingArray[nextIndex]
   
       if (nextChallenge && nextChallenge[language]) {
         setValue(nextChallenge[language]);
       } else {
         console.error("Challenge for the selected language does not exist.");
       }
+    } else if(currentChallengeIndex < codeChallengeArray.length -1) {
+      const nextIndex = currentChallengeIndex + 1;
+      setCurrentChallengeIndex(nextIndex);
+
+      const nextChallenge = codeChallengeArray[nextIndex];
+      setValue(nextChallenge.question);
     } else {
       setValue("//You are a coding superstar, come back for more questions in the future.");
     }

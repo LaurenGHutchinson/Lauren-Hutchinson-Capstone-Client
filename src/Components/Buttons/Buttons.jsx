@@ -22,7 +22,7 @@ function Buttons({handleSelect}) {
         <article className="button-container">
 
             <div className="category__item">
-                <h3 className="questions-heading">Select your number of questions:</h3>
+                <h2 className="questions-heading">Select your number of questions:</h2>
                 {numQuestions.map((num) => (
                 <button 
                 key={num}
