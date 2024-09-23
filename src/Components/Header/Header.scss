@@ -13,7 +13,11 @@ a:hover{
 
 a:active{
     border-bottom: 1px dotted white; 
-    
+}
+
+h3.header__items{
+    font-weight: 400;
+    font-size: 16px;
 }
 
 .active{
@@ -52,10 +56,6 @@ a:active{
         flex-direction: row;
         align-items: center;
         gap: 8px;
-    }
-
-    &__items{
-        font-family: 'Courier New', Courier, monospace;
     }
 
 }

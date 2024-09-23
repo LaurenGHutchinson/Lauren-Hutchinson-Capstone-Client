@@ -10,8 +10,8 @@ const theme = extendTheme({
     styles: {
         global: {
           'html, body': {
-            backgroundColor: '#1e1e1e',  // Default background color
-            color: 'white',               // Default text color
+            backgroundColor: '#1e1e1e',
+            color: 'white',              
           },
         },
       },

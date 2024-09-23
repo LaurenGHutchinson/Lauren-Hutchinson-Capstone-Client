@@ -7,9 +7,9 @@ import ButtonArray from '../ButtonArray/ButtonArray.jsx'
 
 function DropDown() {
     const [selectedJob, setSelectedJob] = useState({})
-
     const [jobTitles, setJobTitles] = useState([]);
     const [jobSkills, setJobSkills] = useState([]);
+    const [initialJobTitle, setInitialJobTitle] = useState({});
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -31,12 +31,11 @@ function DropDown() {
     }
 
     useEffect(() => {
-        console.log("This useEffect has been called")
         const getSkillsList = async () => {
             try{
                 const response = await axios.get(`http://localhost:8080/skills/${selectedJob}`)
                 setJobSkills(response.data)
-
+                setInitialJobTitle(response.data[0])
                 
             }catch (error) {
                 console.error("The skills for the selected job cannot be found")
@@ -71,7 +70,7 @@ function DropDown() {
             onChange={(e) => handleInputChange(e)}
             required
             >
-            <option className="list-color" value="" disabled selected>
+            <option className="list-color" value="" disabled defaultValue={initialJobTitle}>
                 Please select
             </option>
             {jobTitles.map((jobTitle) => (

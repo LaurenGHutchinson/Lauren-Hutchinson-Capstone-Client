@@ -53,7 +53,6 @@ useEffect(() => {
         });
       }
     });
-    console.log(combinedArray)
     setQuestionAnswerArray(combinedArray);
     
   };

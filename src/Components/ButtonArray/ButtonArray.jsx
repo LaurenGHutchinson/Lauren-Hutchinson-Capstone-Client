@@ -4,21 +4,17 @@ import {useNavigate} from 'react-router-dom';
 import Icon from '../../assets/Icons/right-chevron.png'
 
 
-function ButtonArray({initialSkills , skillsList}) {
-    console.log({skillsList})
-    console.log({initialSkills})
+function ButtonArray({skillsList}) {
     const [skillCategories, setSkillCategories] = useState([]);
     const [selectedButtons, setSelectedButtons] = useState([]);
     const navigate = useNavigate();
         
     const handleButtonClick = (skill) => {
-        console.log(skill)
         if (selectedButtons.includes(skill)) {
             setSelectedButtons(selectedButtons.filter((selected) => selected !== skill));
         } else {
             if (selectedButtons.length <=5){
                 setSelectedButtons([...selectedButtons, skill])
-                console.log(selectedButtons);
             }
         }
     }
@@ -29,7 +25,6 @@ function ButtonArray({initialSkills , skillsList}) {
 
     const handleReset = () => {
         setSelectedButtons([]);
-        console.log(selectedButtons)
     }
     
     useEffect(() => {
@@ -41,7 +36,7 @@ function ButtonArray({initialSkills , skillsList}) {
     <div>
         <h2 className="skills-heading">Select skills to train (max 5):</h2>
         {skillCategories.map((skillCat, index) => (
-        <article className="category-container">
+        <article className="category-container " key={index}>
             <div className="category__title">
                 <img className="icon icon-blink" src={Icon}/><h3 >{skillCat}</h3>
             </div>
