@@ -1,0 +1,139 @@
+@use './variables' as *;
+
+
+*{
+    font-family: 'Courier New', Courier, monospace;
+    box-sizing: border-box;
+}
+
+.btn{
+    padding: 8px 24px;
+    border-radius: 36px;
+    border: none;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
+    color: black;
+}
+
+.icon{
+    padding: 0;
+    margin: 0;
+    height: 12px;
+}
+
+.buttons--0{
+    background-color: $vs-blue;
+    &:hover{
+        background-color: $background-dark;
+        color: $vs-blue;
+        border: 2px solid $vs-blue;
+    }
+}
+.buttons--0{
+    background-color: $vs-light-yellow;
+    &:hover{
+        background-color: $background-dark;
+        color: $vs-light-yellow;
+        border: 2px solid $vs-light-yellow;
+    }
+}
+
+.buttons--1{
+    background-color: $vs-soft-blue;
+    &:hover{
+        background-color: $background-dark;
+        color: $vs-soft-blue;
+        border: 2px solid $vs-soft-blue;
+    }
+}
+
+.buttons--2{
+    background-color: $vs-soft-green;
+    &:hover{
+        background-color: $background-dark;
+        color: $vs-soft-green;
+        border: 2px solid $vs-soft-green;
+    }
+}
+
+.buttons--3{
+    background-color: $vs-purple;
+    color:white;
+    &:hover{
+        background-color: $background-dark;
+        color: $vs-soft-purple;
+        border: 2px solid $vs-soft-purple;
+    }
+}
+
+.buttons--4{
+    background-color: $vs-beige;
+    &:hover{
+        background-color: $background-dark;
+        color: $vs-beige;
+        border: 2px solid $vs-beige;
+    }
+}
+
+.buttons--5{
+    background-color: $vs-red;
+    color:white;
+    &:hover{
+        background-color: $background-dark;
+        color: $vs-red;
+        border: 2px solid $vs-red;
+    }
+}
+
+.buttons--6{
+    background-color: $vs-soft-purple;
+    &:hover{
+        background-color: $background-dark;
+        color: $vs-soft-purple;
+        border: 2px solid $vs-soft-purple;
+    }
+
+}
+
+.buttons--7{
+    background-color: $vs-soft-red;
+    &:hover{
+        background-color: $background-dark;
+        color: $vs-soft-red;
+        border: 2px solid $vs-soft-red;
+    }
+}
+.buttons--8{
+    background-color: $vs-light-blue;
+    &:hover{
+        background-color: $background-dark;
+        color: $vs-light-blue;
+        border: 2px solid $vs-light-blue;
+    }
+}
+
+.buttons--9{
+    background-color: $vs-green;
+    &:hover{
+        background-color: $background-dark;
+        color: $vs-green;
+        border: 2px solid $vs-green;
+    }
+}
+.buttons--10{
+    background-color: $vs-salmon;
+    &:hover{
+        background-color: $background-dark;
+        color: $vs-salmon;
+        border: 2px solid $vs-salmon;
+    }
+}
+
+.buttons--11{
+    background-color: $vs-soft-green;
+    &:hover{
+        background-color: $background-dark;
+        color: $vs-soft-green;
+        border: 2px solid $vs-soft-green;
+    }
+}

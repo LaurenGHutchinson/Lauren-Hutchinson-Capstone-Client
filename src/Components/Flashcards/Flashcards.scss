@@ -1,0 +1,108 @@
+@use '../../Styles/variables' as *;
+@use '../../Styles/global' as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  h3.question-count{
+    font-family: "Montserrat"
+  }
+
+  .wrong-answer{
+    background-color: red;
+  }
+
+  .selected{
+    background-color:green;
+  }
+  
+  .flashcard-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 50%;
+  }
+  
+  .flashcard {
+    background-color: $vs-salmon;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 24px;
+    width: 400px;
+    min-height: 250px;
+    padding: 20px;
+    margin-bottom: 24px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+  .question-text{
+    display: flex;
+    font-family: "Montserrat";
+    flex-direction: row;
+    padding: 0 12px;
+    justify-content: center;
+  }
+  
+  .question {
+    font-family: "Montserrat";
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-basis: 30%;
+  }
+  
+  .options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-basis: 70%;
+    gap: 10px;
+  }
+  
+  .option {
+    background-color: #008080; /* Retro teal */
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1em;
+  }
+  
+  .option:hover {
+    background-color: #00ced1; /* Lighter teal on hover */
+    transform: translateY(-3px);
+  }
+  
+  .correct {
+    background-color: #32cd32; /* Lime green for correct */
+  }
+  
+  .incorrect {
+    background-color: #ff6347; /* Tomato red for incorrect */
+  }
+  
+  .flashcard.correct .question {
+    color: #32cd32;
+  }
+  
+  .flashcard.incorrect .question {
+    color: #ff6347;
+  }
+  
+  /* Retro font and a cool effect for flashcard transitions */
+  .flashcard {
+    font-family: 'Courier', monospace;
+    transition: all 0.5s ease-in-out;
+  }

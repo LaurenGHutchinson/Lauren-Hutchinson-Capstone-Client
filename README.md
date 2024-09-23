@@ -11,7 +11,7 @@ tool. This interactive web app is designed to help tech graduates prepare for th
 ### Problem Space
 
 Interviews are stressful enough as they are, this tool is designed to help candidates prepare for those 
-difficult technical interviews based on the specific job title and/or skill set defined in the job description. The app features three main sections, a flashcard based game which tests the user on multiple choice, and true/false questions, a debugger, and a coding challenge. The flashcards can be randomized based on the job title (ie. Jr. Software Engineer), or filtered based on the specific skill sets (ie. React, mySQL, HTML, CSS) required for the role. The debugger gets the users brain focusing on syntax and flow as they need to correct the issues hiddne throughout the provided code. Lastly the algorithm question challenges the user to test their coding skills in a functional code editor that allows them to run their code, or receive a clean solution if they get stuck. 
+difficult technical interviews based on the specific job title and/or skill set defined in the job description. The app features three main sections, a flashcard based game which tests the user on multiple choice, and true/false questions, a debugger, and a coding challenge. The flashcards can be randomized based on the job title (ie. Jr. Software Engineer), or filtered based on the specific skill sets (ie. React, mySQL, HTML, CSS) required for the role. The live debugger gets the users brain focusing on syntax and flow as they need to correct the issues hidden throughout the provided code. Select from a wide variety of coding languages such as JavaScript, TypeScript, Python and more to train the skills you need. Lastly the algorithm question challenges the user to test their coding skills in a functional code editor that allows them to run their code, with hints about the expected output to help them along. 
 
 ### User Profile
 
@@ -34,8 +34,6 @@ difficult technical interviews based on the specific job title and/or skill set 
 - As a user, I want to be given the correct answer if I get a question wrong
 - As a user, I want to be able to see my test results broken down into topics (HTML, React, Node.js)
     HTML 5/5    React 4/5   Node.js 2/5
-- As a user, I want to be given the chance to retest myself on the areas I am struggling with
-- As a user, I want to be give links to the applicable MDN pages to help study certain topics
 
 
 ## Implementation
@@ -43,27 +41,27 @@ difficult technical interviews based on the specific job title and/or skill set 
 ### Tech Stack
 
 -React
--JS or Typescript (will attempt typescript as this is used frequently in industry)
+-JS
 -Express
 -MySql2
 -Client Libraries:
     -react
     -react-router
     -axios
-    -Materials3
+    -Monaco
+    -@Chakra-ui
+    -@emotion
 Server Libraries:
     -express
     -knex
-
-Potentials:
-    -Monaco (for live code editors)
+    -dotenv
 
 
 ### APIs
 
-MVP approach will use a static database of questions organized by job title/skill category/difficulty
+MVP approach uses a static database of questions organized by job title/skill category
 
-Future implementation would include the use of Google Gemini/OpenAi, or other AI models to create a dynamic link to an AI chatbot
+Future implementation will include the use of Google Gemini/OpenAi, or other AI models to create a dynamic link to an AI chatbot through prompt engineering
 where the user would be able to input their specific job title, and or job description, and get feedback on their algorithm. 
 
 
@@ -72,9 +70,7 @@ where the user would be able to input their specific job title, and or job descr
 - Landing Page (Select job title and skills)
 - Flashcard page (select number of flashcards and take quiz)
 - Results page (provides breakdown of score for each section)
-
-Future Implementation
-- Debugger (Contains code editor with present debugging code)
+- Debugger (Contains code editor with short debugging challenges (JS, TS, Python, Java, ...))
 - Algorithm Challenge (Contains code editor and a set coding challenge)
 
 
@@ -85,9 +81,11 @@ Future Implementation
 
 ### Data
 
+The data is separated into five different tables: jobs-titles, skills, job-skills, questions, answers, debugging code, and code challenges. Each table is connected through the use of foreign keys. The debugging and coding challenges are independent tables and only have a unique id. An example of the data flow and an example of populated tables has been included below.  
 
-The data is separated into five different tables: jobs-titles, skills, job-skills, questions, and answers. Each table is connected through the use of foreign keys. An example of the data flow and an example of populated tables has been included below.  
+The first SQL database diagram shows the initial data flow. The final version was updated to reflect the actual final db structure. 
 ![](./src/assets/SQL-database-diagram.png)
+![](./src/assest/SQL-database-diagram-final.png)
 ![](./src/assets/dataflow-example.jpg)
 
 
@@ -132,13 +130,13 @@ GET / relatedQuestions/:skillId
         "id": 1,
         "skill_id": 1,
         "question": "What is the purpose of a web server?",
-        "category": "Back-end development"
+        "skill_name": "Back-end development"
     },
         {
         "id": 2,
         "skill_id": 6,
         "question": "Which HTTP method is used to create a new resource?",
-        "category": "Web Development"
+        "skill_name": "Express.js"
     },
     ...
 ]
@@ -151,21 +149,20 @@ GET / answers/:questionId
     {
         "id": 1,
         "question_id": 1,
-        "answer-text": "To handle client requests and serve files",
-        "is-correct": "TRUE"
+        "answer": "To handle client requests and serve files",
+        "is_correct": "0"
     },
         {
         "id": 2,
         "question_id": 1,
-        "answer-text": "To design user interfaces",
-        "is-correct": "FALSE"
+        "answer": "To design user interfaces",
+        "is_correct": "1"
     },
     ...
 ]
 
 useStates in the front end will keep track of the number of correct and incorrect answers for each 
-category. Once the quiz is finished, an overview of the results will be given showing users where
-they need to improve. 
+category. Once the quiz is finished, an overview of the results will be given showing users where they need to improve including a breakdown of the questions they got wrong. 
 
 ## Roadmap
 
@@ -207,23 +204,12 @@ sql databases
 ## Future Implementations
 
 The MVP approach will be to create a server side database using mySql which will house all of the seed data populated through chatgpt text prompts. Throughout the week following up to the acceptance of the proposal, research will be conducted to see the potential for adding in a 
-direct ai prompt model. If feasible, the inputs defined above would be adjusted to:
+direct ai prompt model. 
+
+Continuation of this project will include the integration of a chatAi to dynamically update the job and skills data based on the users text input. 
+
+    In this case, The inputs defined above would be adjusted to:
     - containing a search bar to input the exact job title,
     - text box for inputting job description to extract job requirements
-
-Future Features:
-    (Debugger)
-    -As a user, I want to have the chance solve simple debugging issues in a code editor
-    
-    - Debugging section built with a live code editor. The code editor is populated with a buggy piece  of code, the user must identify the issues and run the code. 
-
-    (Coding Challenge)
-    - As a user, I want to be provided with a relavent algorithm challenge
-    - As a user, I want to be able to input my code into a frontend editor and run it
-    - As a user, I want to have the option to view an acceptable solution to the challenge
-        (Future Implementation: As a user, I want to be able to get feedback or decoding on my code)
-
-    - Code Challenge section built with a live code editor. The user is given a prompt similar to the  daily challenges in which they will need to create a snippet of code to complete a function. 
-    - With the integration of text prompt ai integration, the ai could provide feedback or support (hints) if the user is stuck. 
 
 

@@ -1,0 +1,109 @@
+@use '../../Styles/fonts' as *;
+@use '../../Styles/variables' as *;
+@use '../../Styles/global' as*;
+
+.results{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 48px;
+    width: 100%;
+    margin: auto;
+
+    &__item{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 24px;
+    }
+
+    &__category{
+        font-family: 'Montserrat';
+        font-size: 24px;
+        color: white;
+    }
+    &__category--total{
+        font-family: 'Montserrat';
+        font-size: 24px;
+        color: white;
+        padding-top: 16px;
+    }
+
+    &__score{
+        font-family: 'Montserrat';
+        font-size: 16px;
+        font-weight: 700;
+        color:white;
+    }
+    
+    &__total{
+        font-family: 'Montserrat';
+        font-size: 24px;
+        color:white;
+    }
+}
+
+.results-categories{
+    display: flex;
+    flex-direction: column;
+    flex-basis:30%;
+    gap: 16px;
+    margin-left: 48px;
+    padding-right: 48px;
+    &__title{
+        color: white;
+        border-bottom: 1px white solid;
+    }
+}
+
+.results-corrections{
+    display: flex;
+    flex-direction: column;
+    flex-basis:70%;
+    gap: 16px;
+    margin-right:48px;
+    &__title{
+        color: white;
+        border-bottom: 1px white solid;
+    }
+    &__question{
+        color: white;
+    }
+}
+
+.answers{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: baseline;
+    margin-right: 48px;
+    padding: 16px 0;
+    gap: 48px;
+    &-group{
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        gap: 16px;
+        &__title{
+            color: white;
+            font-family: "Montserrat"
+        }
+    }
+
+
+}
+
+.btn--wrong{
+    background-color: rgb(141, 38, 38);
+    padding: 8px;
+    color: white;
+    font-family: "Montserrat";
+}
+
+.btn--correct{
+    background-color: rgb(29, 100, 29);
+    padding: 8px;
+    color: white;
+    font-family: "Montserrat";
+}

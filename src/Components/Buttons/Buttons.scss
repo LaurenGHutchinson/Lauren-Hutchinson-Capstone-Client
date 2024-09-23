@@ -1,0 +1,52 @@
+
+@use '../../Styles/global' as *;
+@use '../../Styles/mixins' as *;
+@use '../../Styles//fonts' as*;
+
+h2{
+    margin: 0;
+    font-family: "Montserrat";
+    color: white;
+    text-align: center;
+}
+
+.button-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 0 24px 12px 24px;
+    @include tablet{
+        width: 100%;
+        gap: 24px;
+        flex-direction: row;
+        padding: 0 60px 12px 60px;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.selected {
+    background-color: green;
+    color: white;
+}
+
+.questions-heading{
+    padding-right: 24px;
+}
+
+.category__item{
+    width: 100%;
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+    @include tablet{
+        width: auto;
+
+    }
+
+}
+
+
