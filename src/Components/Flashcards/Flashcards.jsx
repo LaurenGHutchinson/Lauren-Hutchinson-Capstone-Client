@@ -22,7 +22,7 @@ const remainder = numOfQuestions%selectedSkills.length;
 
 const getQuestionsList = async (skillId) => {
   try {
-    const response = await axios.get(`${baseUrl}questions/${skillId}`);
+    const response = await axios.get(`https://byteback-9ec8415feff0.herokuapp.com/questions/${skillId}`);
     return response.data; 
   } catch (error) {
     console.error("Unable to get the questions list", error);
@@ -35,7 +35,7 @@ const getAnswersArray = async (currentQuestion) => {
   setQuestionText(currentQuestion.question)
 
   try{
-    const response = await axios.get(`${baseUrl}answers/${currentQuestionId}`);
+    const response = await axios.get(`https://byteback-9ec8415feff0.herokuapp.com/answers/${currentQuestionId}`);
     const newAnswers = response.data
     setAnswersArray(newAnswers);
 

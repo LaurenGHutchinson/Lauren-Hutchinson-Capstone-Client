@@ -45,6 +45,7 @@ const Output = ({ editorRef, language }) => {
       </Button>
       <Box
         height="50vh"
+        overflowY='auto'
         bg="liveEditor.500"
         p={2}
         color={isError ? "red.400" : ""}
