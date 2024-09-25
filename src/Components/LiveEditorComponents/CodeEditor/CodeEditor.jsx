@@ -25,14 +25,14 @@ const CodeEditor = () => {
   const getCodePrompts = async () => {
     try {
       if (editorPage === 'debugger') {
-        const response = await axios.get(`http://localhost:8080/debugger/${language}`);
+        const response = await axios.get(`${baseUrl}debugger/${language}`);
         setDebuggingArray(response.data);
       
         if (response.data && response.data.length > 0) {
           setValue(response.data[0][language]);
         }
       } else {
-        const response = await axios.get("http://localhost:8080/codingChallenge");
+        const response = await axios.get(`${baseUrl}codingChallenge`);
         setCodeChallengeArray(response.data);
         setValue(`${response.data[0].question}\n\n//Expected Outcome: ${response.data[0].expectedOutcome}`)
       }

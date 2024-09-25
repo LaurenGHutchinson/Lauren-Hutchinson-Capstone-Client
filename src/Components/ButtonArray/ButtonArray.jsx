@@ -5,6 +5,7 @@ import Icon from '../../assets/Icons/right-chevron.png'
 
 
 function ButtonArray({skillsList}) {
+
     const [skillCategories, setSkillCategories] = useState([]);
     const [selectedButtons, setSelectedButtons] = useState([]);
     const navigate = useNavigate();

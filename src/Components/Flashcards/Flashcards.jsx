@@ -5,7 +5,7 @@ import axios from'axios'
 import {useNavigate} from 'react-router-dom';
 
 function Flashcards({selectedSkills, numOfQuestions}) {
-
+const baseUrl = import.meta.env.BASE_URL;
 const navigate = useNavigate();
 
 const [pickedQuestionsArray, setPickedQuestionsArray] = useState([]);
@@ -22,7 +22,7 @@ const remainder = numOfQuestions%selectedSkills.length;
 
 const getQuestionsList = async (skillId) => {
   try {
-    const response = await axios.get(`http://localhost:8080/questions/${skillId}`);
+    const response = await axios.get(`${baseUrl}questions/${skillId}`);
     return response.data; 
   } catch (error) {
     console.error("Unable to get the questions list", error);
@@ -35,7 +35,7 @@ const getAnswersArray = async (currentQuestion) => {
   setQuestionText(currentQuestion.question)
 
   try{
-    const response = await axios.get(`http://localhost:8080/answers/${currentQuestionId}`);
+    const response = await axios.get(`${baseUrl}answers/${currentQuestionId}`);
     const newAnswers = response.data
     setAnswersArray(newAnswers);
 
