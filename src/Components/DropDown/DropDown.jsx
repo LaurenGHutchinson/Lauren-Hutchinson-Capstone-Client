@@ -19,7 +19,7 @@ function DropDown() {
 
     const handleAllSkillsClick = async () => {
         try{
-            const response = await axios.get(`${baseUrl}skills/`)
+            const response = await axios.get(`https://byteback-9ec8415feff0.herokuapp.com/skills/`)
             setJobSkills(response.data)
             
         }catch (error) {
@@ -35,7 +35,7 @@ function DropDown() {
     useEffect(() => {
         const getSkillsList = async () => {
             try{
-                const response = await axios.get(`${baseUrl}skills/${selectedJob}`)
+                const response = await axios.get(`https://byteback-9ec8415feff0.herokuapp.com/skills/${selectedJob}`)
                 setJobSkills(response.data)
                 setInitialJobTitle(response.data[0])
                 
@@ -49,7 +49,7 @@ function DropDown() {
 
     const getJobList = async () => {
         try {
-            const response = await axios.get(`${baseUrl}jobs`);
+            const response = await axios.get(`https://byteback-9ec8415feff0.herokuapp.com/jobs`);
             const firstJob = response.data[0];
             setSelectedJob(firstJob.id);
             setJobTitles(response.data);
