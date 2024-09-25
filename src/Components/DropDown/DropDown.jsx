@@ -6,7 +6,7 @@ import ButtonArray from '../ButtonArray/ButtonArray.jsx'
 
 
 function DropDown() {
-    const baseUrl = process.env.BASE_URL;
+    const baseUrl = import.meta.env.BASE_URL;
     const [selectedJob, setSelectedJob] = useState({})
     const [jobTitles, setJobTitles] = useState([]);
     const [jobSkills, setJobSkills] = useState([]);
@@ -15,6 +15,7 @@ function DropDown() {
     const handleSubmit = async (e) => {
         e.preventDefault();
     }
+    console.log(baseUrl)
 
     const handleAllSkillsClick = async () => {
         try{
